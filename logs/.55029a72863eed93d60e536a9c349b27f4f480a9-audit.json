@@ -1,0 +1,14 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/gokulkurup/root/curoBackend/logs/.55029a72863eed93d60e536a9c349b27f4f480a9-audit.json",
+    "files": [
+        {
+            "date": 1601993777889,
+            "name": "/home/gokulkurup/root/curoBackend/logs/2020-10-06.log",
+            "hash": "21a08f23eec541e865ee8ebf0f34fddb"
+        }
+    ]
+}

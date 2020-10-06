@@ -114,3 +114,19 @@ info: Mongoose connection done
 info: server running on port : 3000
 info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
 info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[]" at path "roles" {"errors":{"roles":{"stringValue":"\"[]\"","kind":"ObjectId","value":[],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ undefined ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ undefined ]\"","kind":"ObjectId","value":[null],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: [object Object]
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ undefined ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ undefined ]\"","kind":"ObjectId","value":[null],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done

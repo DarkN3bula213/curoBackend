@@ -1,4 +1,8 @@
+import { InternalError } from "../../core/ApiError";
+import managerSchema from "../../routes/v1/manager/managerSchema";
 import Manager, { ManagerModel } from "../model/Manager";
+import { RoleCode, RoleModel } from "../model/Role";
+import RoleRepo from "./RoleRepo";
 
 export class ManagerRepo {
   //findbyId()
@@ -8,20 +12,15 @@ export class ManagerRepo {
     return await ManagerModel.findOne({ mobile_number }).lean<Manager>().exec();
   }
   public static async create(
-    name: string,
-    shift: string,
-    mobile_number: string,
-    date_of_join: string
+    manager: Manager,
+    roleCode: RoleCode
   ): Promise<Manager> {
     const now = new Date();
-    const newManager = await ManagerModel.create({
-      name,
-      shift,
-      mobile_number,
-      date_of_join,
-      createdAt: now,
-      updatedAt: now,
-    });
+    manager.createdAt = manager.updatedAt = now;
+    const role = await RoleRepo.findByRoleCode(roleCode);
+    if (!role) throw new InternalError(`Role ${roleCode} not defined`);
+    manager.roles = [];
+    const newManager = await ManagerModel.create(manager);
     return newManager.toObject();
   }
   //updateFcmToken(new fcmtoken,)

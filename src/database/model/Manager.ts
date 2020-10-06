@@ -40,6 +40,7 @@ const managerSchema = new Schema({
   roles: {
     type: [{ type: Schema.Types.ObjectId, ref: "role" }],
     required: true,
+    select: false,
   },
   isAllowed: {
     type: Schema.Types.Boolean,

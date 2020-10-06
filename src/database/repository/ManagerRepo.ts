@@ -11,7 +11,11 @@ export class ManagerRepo {
   public static async findByMobileNumber(
     mobile_number: string
   ): Promise<Manager> {
-    return await ManagerModel.findOne({ mobile_number }).lean<Manager>().exec();
+    return ManagerModel.findOne({ mobile_number })
+      .select("+roles")
+      .populate({ path: "roles", match: { status: true } })
+      .lean<Manager>()
+      .exec();
   }
   public static async create(
     manager: Manager,
@@ -20,14 +24,16 @@ export class ManagerRepo {
     const now = new Date();
     manager.createdAt = manager.updatedAt = now;
     manager.roles = [];
+    let role;
     for (const rc of roleCode) {
-      let role = await RoleRepo.findByRoleCode(rc);
+      role = await RoleRepo.findByRoleCode(rc);
       if (!role) throw new InternalError(`Role ${roleCode} not defined`);
       manager.roles.push(role._id);
     }
     const newManager = await ManagerModel.create(manager);
     return newManager.toObject();
   }
+
   //updateFcmToken(new fcmtoken,)
   //toggleALlowed()
 }

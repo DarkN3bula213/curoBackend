@@ -11,4 +11,7 @@ export default {
       Joi.string().valid(RoleCode.DIRECTOR, RoleCode.SUPER_ADMIN).required()
     ),
   }),
+  getInfo: Joi.object().keys({
+    mobile_number: Joi.string().required(),
+  }),
 };

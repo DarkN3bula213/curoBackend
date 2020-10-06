@@ -1,4 +1,4 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document, Types } from "mongoose";
 import Manager from "./Manager";
 
 export const DOCUMENT_NAME = "unit";
@@ -7,10 +7,10 @@ export const COLLECTION_NAME = "units";
 export default interface Unit extends Document {
   name: string;
   unit_code: string;
-  manager: Manager;
-  director: Manager;
-  createdAt: Date;
-  updatedAt: Date;
+  manager: Types.ObjectId;
+  director: Types.ObjectId;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const unitSchema = new Schema({

@@ -38,8 +38,7 @@ const managerSchema = new Schema({
     required: true,
   },
   roles: {
-    type: Schema.Types.ObjectId,
-    ref: "role",
+    type: [{ type: Schema.Types.ObjectId, ref: "role" }],
     required: true,
   },
   isAllowed: {

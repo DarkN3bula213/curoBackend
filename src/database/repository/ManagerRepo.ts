@@ -2,8 +2,9 @@ import { InternalError } from "../../core/ApiError";
 import Logger from "../../core/Logger";
 import managerSchema from "../../routes/v1/manager/managerSchema";
 import Manager, { ManagerModel } from "../model/Manager";
-import { RoleCode, RoleModel } from "../model/Role";
+import Role, { RoleCode, RoleModel } from "../model/Role";
 import RoleRepo from "./RoleRepo";
+import { Types } from "mongoose";
 
 export class ManagerRepo {
   //findbyId()
@@ -14,13 +15,16 @@ export class ManagerRepo {
   }
   public static async create(
     manager: Manager,
-    roleCode: RoleCode
+    roleCode: RoleCode[]
   ): Promise<Manager> {
     const now = new Date();
     manager.createdAt = manager.updatedAt = now;
-    const role = await RoleRepo.findByRoleCode(roleCode);
-    if (!role) throw new InternalError(`Role ${roleCode} not defined`);
-    manager.roles = [role._id];
+    manager.roles = [];
+    for (const rc of roleCode) {
+      let role = await RoleRepo.findByRoleCode(rc);
+      if (!role) throw new InternalError(`Role ${roleCode} not defined`);
+      manager.roles.push(role._id);
+    }
     const newManager = await ManagerModel.create(manager);
     return newManager.toObject();
   }

@@ -14,14 +14,14 @@ router.post(
   "/",
   validator(managerSchema.new),
   asyncHandler(async (req, res) => {
-    const { name, shift, mobile_number, date_of_join } = req.body;
+    const { name, shift, mobile_number, date_of_join, extraRoles } = req.body;
 
     const exists = await ManagerRepo.findByMobileNumber(mobile_number);
     if (exists) throw new BadRequestError("Manager already exists");
-
+    if (extraRoles) extraRoles.push(RoleCode.MANAGER);
     const createdManager = await ManagerRepo.create(
       { name, shift, mobile_number, date_of_join } as Manager,
-      RoleCode.MANAGER
+      extraRoles ? extraRoles : [RoleCode.MANAGER]
     );
 
     new SuccessResponse("Manager Sucessfully Registered", {

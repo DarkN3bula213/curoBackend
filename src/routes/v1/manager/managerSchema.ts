@@ -1,4 +1,5 @@
 import Joi from "@hapi/joi";
+import { RoleCode } from "../../../database/model/Role";
 
 export default {
   new: Joi.object().keys({
@@ -6,5 +7,8 @@ export default {
     shift: Joi.string().required().valid("day", "night"),
     mobile_number: Joi.string().required(),
     date_of_join: Joi.string().required(),
+    extraRoles: Joi.array().items(
+      Joi.string().valid(RoleCode.DIRECTOR, RoleCode.SUPER_ADMIN).required()
+    ),
   }),
 };

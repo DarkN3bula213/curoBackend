@@ -131,3 +131,148 @@ info: server running on port : 3000
 info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
 info: Mongoose connection done
 error: shift must be one of [day, night]
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: Unexpected string in JSON at position 107 {"expose":true,"statusCode":400,"status":400,"body":"{\n    \"name\":\"Director\",\n    \"shift\":\"day\",\n    \"mobile_number\":\"123564\",\n     \"date_of_join\":\"12334\"\n     \"extraRoles\":[\"Director\"]\n}","type":"entity.parse.failed"}
+error: extraRoles is not allowed
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]\"","kind":"ObjectId","value":["5f7ac45748f9867bbd7ac479","5f7ac45748f9867bbd7ac478"],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]\"","kind":"ObjectId","value":["5f7ac45748f9867bbd7ac479","5f7ac45748f9867bbd7ac478"],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]\"","kind":"ObjectId","value":["5f7ac45748f9867bbd7ac479","5f7ac45748f9867bbd7ac478"],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]\"","kind":"ObjectId","value":["5f7ac45748f9867bbd7ac479","5f7ac45748f9867bbd7ac478"],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: Arguments must be aggregate pipeline operators
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: Cannot read property 'push' of undefined
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: Cannot read property 'push' of undefined
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Cast to ObjectId failed for value "[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]" at path "roles" {"errors":{"roles":{"stringValue":"\"[ 5f7ac45748f9867bbd7ac479, 5f7ac45748f9867bbd7ac478 ]\"","kind":"ObjectId","value":["5f7ac45748f9867bbd7ac479","5f7ac45748f9867bbd7ac478"],"path":"roles","reason":{}}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done

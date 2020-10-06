@@ -46,3 +46,40 @@ info: Mongoose connection done
 info: server running on port : 3000
 info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
 info: Mongoose connection done
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Path `roles` is required., name: Path `name` is required., shift: Path `shift` is required., mobile_number: Path `mobile_number` is required., date_of_join: Path `date_of_join` is required. {"errors":{"roles":{"name":"ValidatorError","message":"Path `roles` is required.","properties":{"message":"Path `roles` is required.","type":"required","path":"roles"},"kind":"required","path":"roles"},"name":{"name":"ValidatorError","message":"Path `name` is required.","properties":{"message":"Path `name` is required.","type":"required","path":"name"},"kind":"required","path":"name"},"shift":{"name":"ValidatorError","message":"Path `shift` is required.","properties":{"message":"Path `shift` is required.","type":"required","path":"shift"},"kind":"required","path":"shift"},"mobile_number":{"name":"ValidatorError","message":"Path `mobile_number` is required.","properties":{"message":"Path `mobile_number` is required.","type":"required","path":"mobile_number"},"kind":"required","path":"mobile_number"},"date_of_join":{"name":"ValidatorError","message":"Path `date_of_join` is required.","properties":{"message":"Path `date_of_join` is required.","type":"required","path":"date_of_join"},"kind":"required","path":"date_of_join"}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: manager validation failed: roles: Path `roles` is required., name: Path `name` is required., shift: Path `shift` is required., mobile_number: Path `mobile_number` is required., date_of_join: Path `date_of_join` is required. {"errors":{"roles":{"name":"ValidatorError","message":"Path `roles` is required.","properties":{"message":"Path `roles` is required.","type":"required","path":"roles"},"kind":"required","path":"roles"},"name":{"name":"ValidatorError","message":"Path `name` is required.","properties":{"message":"Path `name` is required.","type":"required","path":"name"},"kind":"required","path":"name"},"shift":{"name":"ValidatorError","message":"Path `shift` is required.","properties":{"message":"Path `shift` is required.","type":"required","path":"shift"},"kind":"required","path":"shift"},"mobile_number":{"name":"ValidatorError","message":"Path `mobile_number` is required.","properties":{"message":"Path `mobile_number` is required.","type":"required","path":"mobile_number"},"kind":"required","path":"mobile_number"},"date_of_join":{"name":"ValidatorError","message":"Path `date_of_join` is required.","properties":{"message":"Path `date_of_join` is required.","type":"required","path":"date_of_join"},"kind":"required","path":"date_of_join"}},"_message":"manager validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: name is required
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done

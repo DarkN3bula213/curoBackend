@@ -3,11 +3,14 @@ import { BadRequestError } from "../../../core/ApiError";
 import { SuccessResponse } from "../../../core/ApiResponse";
 import { ManagerRepo } from "../../../database/repository/ManagerRepo";
 import asyncHandler from "../../../helpers/asyncHandler";
+import validator from "../../../helpers/validator";
+import managerSchema from "./managerSchema";
 
 const router = express.Router();
 
 router.post(
   "/",
+  validator(managerSchema.new),
   asyncHandler(async (req, res) => {
     const { name, shift, mobile_number, date_of_join } = req.body;
 

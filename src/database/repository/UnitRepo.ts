@@ -1,4 +1,3 @@
-import Manager from "../model/Manager";
 import Unit, { UnitModel } from "../model/Unit";
 
 export default class UnitRepo {

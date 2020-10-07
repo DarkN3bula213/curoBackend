@@ -9,9 +9,16 @@ import { Types } from "mongoose";
 export class ManagerRepo {
   //findbyId()
   public static async findByMobileNumber(
-    mobile_number: string
+    mobile_number: string,
+    isDirector?: boolean,
+    isAdmin?: boolean
   ): Promise<Manager> {
-    return ManagerModel.findOne({ mobile_number })
+    let query: any = {
+      mobile_number,
+    };
+    if (isDirector) query["roles.role"] = { $elemMatch: RoleCode.DIRECTOR };
+    if (isAdmin) query["roles.role"] = { $elemMatch: RoleCode.SUPER_ADMIN };
+    return ManagerModel.findOne(query)
       .select("+roles")
       .populate({ path: "roles", match: { status: true } })
       .lean<Manager>()

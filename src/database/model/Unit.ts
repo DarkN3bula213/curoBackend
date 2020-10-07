@@ -7,8 +7,8 @@ export const COLLECTION_NAME = "units";
 export default interface Unit extends Document {
   name: string;
   unit_code: string;
-  manager: Types.ObjectId;
-  director: Types.ObjectId;
+  manager: Manager;
+  director: Manager;
   createdAt?: Date;
   updatedAt?: Date;
 }

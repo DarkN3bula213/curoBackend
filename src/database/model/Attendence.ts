@@ -1,11 +1,11 @@
+import { Types } from "mongoose";
 import { Document, model, Schema } from "mongoose";
-import Worker from "./Worker";
 
 export const DOCUMENT_NAME = "attendence";
 export const COLLECTION_NAME = "attendenceLog";
 
 export default interface Attendence extends Document {
-  worker: Worker;
+  worker: Types.ObjectId;
   inTime: number;
   outTime: number;
   createdAt: Date;

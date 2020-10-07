@@ -10,8 +10,8 @@ export default interface Worker extends Document {
   shift: string;
   mobile_number: string;
   date_of_join: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const workerSchema = new Schema({

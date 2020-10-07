@@ -5,6 +5,7 @@ import { BadRequestError } from "../../../core/ApiError";
 import { SuccessResponse } from "../../../core/ApiResponse";
 import validator from "../../../helpers/validator";
 import schema from "./workerSchema";
+import Worker from "../../../database/model/Worker";
 const router = express.Router();
 
 router.post(
@@ -25,14 +26,14 @@ router.post(
     const exists = await WorkerRepo.findByMobileNumber(mobile_number);
     if (exists) throw new BadRequestError("Worker already exists");
 
-    const createdWorker = await WorkerRepo.create(
+    const createdWorker = await WorkerRepo.create({
       unit_id,
       aadhar_number,
       name,
       shift,
       mobile_number,
-      date_of_join
-    );
+      date_of_join,
+    } as Worker);
 
     new SuccessResponse("Sucessful Worker Registration", {
       worker: createdWorker,

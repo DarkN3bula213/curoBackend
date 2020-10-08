@@ -1,7 +1,9 @@
 import Worker, { WorkerModel } from "../model/Worker";
 
 export default class WorkerRepo {
-  //allWorkers();
+  public static async getAllWorkers(): Promise<Worker[]> {
+    return WorkerModel.find({}).lean<Worker>().exec();
+  }
   public static async create(worker: Worker): Promise<Worker> {
     const now = new Date();
     worker.createdAt = worker.updatedAt = now;

@@ -18,5 +18,19 @@ export default class AttendenceRepo {
     const att = await AttendenceModel.create(attendence);
     return att.toObject();
   }
-  // fetchAttendenceByDate(start, end);
+  public static async fetchAttendenceByDateRange(
+    startDate: Date,
+    endDate: Date
+  ): Promise<Attendence[]> {
+    return AttendenceModel.find({
+      createdAt: {
+        //octal numbers used here with a prefix of 0o
+        $gte: new Date(new Date(startDate).setHours(0o00, 0o00, 0o00)),
+        $lt: new Date(new Date(endDate).setHours(23, 59, 59)),
+      },
+    })
+      .sort({ createdAt: "asc" })
+      .lean<Attendence>()
+      .exec();
+  }
 }

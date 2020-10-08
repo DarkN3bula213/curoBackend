@@ -1,5 +1,4 @@
 import Joi from "@hapi/joi";
-
 export default {
   new: Joi.object().keys({
     worker_mn: Joi.string().required(),
@@ -7,5 +6,9 @@ export default {
     month: Joi.number().required().min(1).max(12),
     date: Joi.number().min(1).max(31).required(),
     inTime: Joi.string().required(),
+  }),
+  getAttendenceByRange: Joi.object().keys({
+    startDate: Joi.date().required(),
+    endDate: Joi.date().required(),
   }),
 };

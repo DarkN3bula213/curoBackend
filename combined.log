@@ -640,3 +640,203 @@ info: Mongoose connection done
 info: server running on port : 3000
 info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
 info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: worker_mn is required
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: worker_mn must be a string
+error: date is required
+error: intime is required
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: date must be a string
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: intime is required
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: attendence validation failed: inTime: Cast to Number failed for value "2020-10-8T4:16:00" at path "inTime" {"errors":{"inTime":{"stringValue":"\"2020-10-8T4:16:00\"","kind":"Number","value":"2020-10-8T4:16:00","path":"inTime","reason":{"generatedMessage":true,"code":"ERR_ASSERTION","actual":false,"expected":true,"operator":"=="}}},"_message":"attendence validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: attendence validation failed: inTime: Cast to date failed for value "2020-10-8T4:16:00" at path "inTime" {"errors":{"inTime":{"stringValue":"\"2020-10-8T4:16:00\"","kind":"date","value":"2020-10-8T4:16:00","path":"inTime","reason":{"generatedMessage":true,"code":"ERR_ASSERTION","actual":false,"expected":true,"operator":"=="}}},"_message":"attendence validation failed"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: dateObj is not defined
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done

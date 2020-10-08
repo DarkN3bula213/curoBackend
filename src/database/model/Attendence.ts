@@ -6,10 +6,12 @@ export const COLLECTION_NAME = "attendenceLog";
 
 export default interface Attendence extends Document {
   worker: Types.ObjectId;
-  inTime: number;
-  outTime: number;
-  createdAt: Date;
-  updatedAt: Date;
+  inTime: Date;
+  year: number;
+  month: number;
+  date: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const attendenceSchema = new Schema({
@@ -18,13 +20,24 @@ const attendenceSchema = new Schema({
     ref: "worker",
     required: true,
   },
-  inTime: {
+  year: {
     type: Schema.Types.Number,
     required: true,
   },
-  outTime: {
+  month: {
     type: Schema.Types.Number,
     required: true,
+  },
+  date: {
+    type: Schema.Types.Number,
+    required: true,
+  },
+  inTime: {
+    type: Schema.Types.Date,
+    required: true,
+  },
+  outTime: {
+    type: Schema.Types.Date,
   },
   createdAt: {
     type: Schema.Types.Date,

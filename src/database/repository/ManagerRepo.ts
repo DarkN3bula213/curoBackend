@@ -19,7 +19,7 @@ export class ManagerRepo {
     if (isDirector) query["roles.role"] = { $elemMatch: RoleCode.DIRECTOR };
     if (isAdmin) query["roles.role"] = { $elemMatch: RoleCode.SUPER_ADMIN };
     return ManagerModel.findOne(query)
-      .select("+roles")
+      .select("+roles +fcm_token")
       .populate({ path: "roles", match: { status: true } })
       .lean<Manager>()
       .exec();

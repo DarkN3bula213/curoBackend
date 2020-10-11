@@ -14,7 +14,7 @@ const router = express.Router();
 router.post(
   "/",
   validator(managerSchema.toggleIsAllowed),
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res, next) => {
     const { manager_mn, isAllowed } = req.body;
     const manager = await ManagerRepo.findByMobileNumber(manager_mn);
     if (!manager) throw new BadRequestError("Invalid Manager");
@@ -24,12 +24,11 @@ router.post(
       );
     try {
       await ManagerRepo.toggleIsAllowed(manager._id, isAllowed);
-      await triggerFcmMessage(res, manager.fcm_token);
+      await triggerFcmMessage(req, res, next, manager.fcm_token);
+      new SuccessMsgResponse("Successful Toggle of isAllowed").send(res);
     } catch (err) {
       throw new InternalError(`err in toggleIsAllowed: ${err}`);
     }
-
-    new SuccessMsgResponse("Successful Toggle of isAllowed").send(res);
   })
 );
 

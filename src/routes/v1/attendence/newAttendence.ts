@@ -13,7 +13,7 @@ router.post(
   "/",
   validator(attendenceSchema.new),
   asyncHandler(async (req, res) => {
-    const { worker_mn, year, month, date } = req.body;
+    const { worker_mn, year, month, day } = req.body;
 
     const now = new Date();
 
@@ -24,16 +24,16 @@ router.post(
       worker._id,
       year,
       month,
-      date
+      day
     );
     if (exists) throw new BadRequestError("Attendence Log Already exists");
 
     const record = await AttendenceRepo.create({
-      worker: worker._id,
+      worker,
       inTime: now,
       year,
       month,
-      date,
+      day,
     } as Attendence);
 
     new SuccessResponse("Attendence Logged Successfully", {

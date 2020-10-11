@@ -1,14 +1,29 @@
 import Attendence, { AttendenceModel } from "../model/Attendence";
 import { Types } from "mongoose";
+import WorkerRepo from "./WorkerRepo";
+import Worker from "../model/Worker";
 
 export default class AttendenceRepo {
+  public static async MarkOut(attn: Attendence): Promise<any> {
+    attn.markedOut = true;
+    attn.updatedAt = new Date();
+    return AttendenceModel.updateOne({ _id: attn._id }, { $set: { ...attn } })
+      .lean()
+      .exec();
+  }
   public static async findByMobileNumberAndDate(
-    worker: Types.ObjectId,
+    worker: Worker,
     year: number,
     month: number,
-    date: number
+    day: number
   ): Promise<Attendence> {
-    return AttendenceModel.findOne({ worker, year, month, date })
+    return AttendenceModel.findOne({
+      worker,
+      year,
+      month,
+      day,
+    })
+      .populate("worker")
       .lean<Attendence>()
       .exec();
   }
@@ -30,6 +45,7 @@ export default class AttendenceRepo {
       },
     })
       .sort({ createdAt: "asc" })
+      .populate("worker")
       .lean<Attendence>()
       .exec();
   }

@@ -1,15 +1,17 @@
 import { Types } from "mongoose";
 import { Document, model, Schema } from "mongoose";
+import Worker from "./Worker";
 
 export const DOCUMENT_NAME = "attendence";
 export const COLLECTION_NAME = "attendenceLog";
 
 export default interface Attendence extends Document {
-  worker: Types.ObjectId;
+  worker: Worker;
   inTime: Date;
   year: number;
   month: number;
-  date: number;
+  day: number;
+  markedOut?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -28,9 +30,13 @@ const attendenceSchema = new Schema({
     type: Schema.Types.Number,
     required: true,
   },
-  date: {
+  day: {
     type: Schema.Types.Number,
     required: true,
+  },
+  markedOut: {
+    type: Schema.Types.Boolean,
+    default: false,
   },
   inTime: {
     type: Schema.Types.Date,

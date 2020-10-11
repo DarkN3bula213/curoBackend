@@ -1,4 +1,5 @@
 import Worker, { WorkerModel } from "../model/Worker";
+import { Types } from "mongoose";
 
 export default class WorkerRepo {
   public static async getAllWorkers(): Promise<Worker[]> {
@@ -9,6 +10,9 @@ export default class WorkerRepo {
     worker.createdAt = worker.updatedAt = now;
     const newWorker = await WorkerModel.create(worker);
     return newWorker.toObject();
+  }
+  public static findById(worker_id: Types.ObjectId): Promise<Worker> {
+    return WorkerModel.findById(worker_id).lean<Worker>().exec();
   }
   //updateWorker();
   //getWorkerById();

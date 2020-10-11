@@ -1,4 +1,4 @@
-import { Document, Schema, model } from "mongoose";
+import { Types, Document, Schema, model } from "mongoose";
 
 export const DOCUMENT_NAME = "worker";
 export const COLLECTION_NAME = "workers";
@@ -14,7 +14,7 @@ export default interface Worker extends Document {
   updatedAt?: Date;
 }
 
-const workerSchema = new Schema({
+export const workerSchema = new Schema({
   unit_id: {
     type: Schema.Types.String,
     required: true,
@@ -23,8 +23,6 @@ const workerSchema = new Schema({
   aadhar_number: {
     type: Schema.Types.String,
     required: true,
-    unique: true,
-    select: false,
   },
   name: {
     type: Schema.Types.String,

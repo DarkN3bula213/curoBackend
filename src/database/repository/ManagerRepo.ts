@@ -26,11 +26,13 @@ export class ManagerRepo {
   }
   public static async create(
     manager: Manager,
-    roleCode: RoleCode[]
+    roleCode: RoleCode[],
+    fcm_token?: string
   ): Promise<Manager> {
     const now = new Date();
     manager.createdAt = manager.updatedAt = now;
     manager.roles = [];
+    if (fcm_token) manager.fcm_token = fcm_token;
     let role;
     for (const rc of roleCode) {
       role = await RoleRepo.findByRoleCode(rc);
@@ -42,5 +44,21 @@ export class ManagerRepo {
   }
 
   //updateFcmToken(new fcmtoken,)
-  //toggleALlowed()
+  public static toggleIsAllowed(
+    _id: Types.ObjectId,
+    isAllowed: boolean
+  ): Promise<any> {
+    return ManagerModel.updateOne({ _id }, { $set: { isAllowed } })
+      .lean()
+      .exec();
+  }
+
+  public static async updateFcmToken(
+    mobile_number: string,
+    fcm_token: string
+  ): Promise<any> {
+    return ManagerModel.updateOne({ mobile_number }, { $set: { fcm_token } })
+      .lean()
+      .exec();
+  }
 }

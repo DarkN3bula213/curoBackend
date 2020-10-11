@@ -31,6 +31,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-pdf": "^1.2.2",
+    "firebase-admin": "^9.2.0",
     "helmet": "^3.21.3",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",

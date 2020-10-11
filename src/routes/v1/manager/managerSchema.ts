@@ -10,8 +10,17 @@ export default {
     extraRoles: Joi.array().items(
       Joi.string().valid(RoleCode.DIRECTOR, RoleCode.SUPER_ADMIN).required()
     ),
+    fcm_token: Joi.string(),
   }),
   getInfo: Joi.object().keys({
     mobile_number: Joi.string().required(),
+  }),
+  toggleIsAllowed: Joi.object().keys({
+    manager_mn: Joi.string().required(),
+    isAllowed: Joi.boolean().required(),
+  }),
+  updateFcmToken: Joi.object().keys({
+    mobile_number: Joi.string().required(),
+    fcm_token: Joi.string().required(),
   }),
 };

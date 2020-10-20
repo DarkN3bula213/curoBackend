@@ -5,6 +5,7 @@ export const port = process.env.PORT;
 export const db = {
   devUrl: process.env.DB_DEV,
   prodUrl: process.env.DB_PROD,
+  firebaseConfig: process.env.FIREBASE_CONFIG_BASE64,
 };
 
 export const corsUrl = process.env.CORS_URL;

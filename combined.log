@@ -1967,3 +1967,103 @@ info: server running on port : 3000
 info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
 info: Mongoose connection done
 info: The registration token is not a valid FCM registration token {"errorInfo":{"code":"messaging/invalid-argument","message":"The registration token is not a valid FCM registration token"},"codePrefix":"messaging"}
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: {
+    "n": 1,
+    "nModified": 1,
+    "ok": 1
+}
+info: The registration token is not a valid FCM registration token {"errorInfo":{"code":"messaging/invalid-argument","message":"The registration token is not a valid FCM registration token"},"codePrefix":"messaging"}
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+error: $elemMatch needs an Object {"ok":0,"code":2,"codeName":"BadValue","name":"MongoError"}
+info: Mongoose default connection disconnected
+info: Mongoose default connection disconnected through app termination
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: Mongoose default connection disconnected
+info: server running on port : 3000
+info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
+info: Mongoose connection done
+info: test

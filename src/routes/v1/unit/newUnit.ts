@@ -1,7 +1,8 @@
 import express from "express";
 import { Types } from "mongoose";
 import { BadRequestError } from "../../../core/ApiError";
-import { SuccessResponse } from "../../../core/ApiResponse";
+import { SuccessMsgResponse, SuccessResponse } from "../../../core/ApiResponse";
+import Logger from "../../../core/Logger";
 import { ManagerModel } from "../../../database/model/Manager";
 import Unit from "../../../database/model/Unit";
 import { ManagerRepo } from "../../../database/repository/ManagerRepo";
@@ -17,6 +18,7 @@ router.post(
   validator(unitSchema.new),
   asyncHandler(async (req, res) => {
     const { name, unit_code, manager_mn, director_mn } = req.body;
+    Logger.info("test");
 
     const exists = await UnitRepo.findByUnitCode(unit_code);
     if (exists) throw new BadRequestError("Unit already exists");
@@ -25,7 +27,7 @@ router.post(
     if (!manager)
       throw new BadRequestError("Manager For the Unit is not valid");
 
-    const director = await ManagerRepo.findByMobileNumber(director_mn, true);
+    const director = await ManagerRepo.findByMobileNumber(director_mn);
     if (!director)
       throw new BadRequestError("Director For the Unit is not valid");
 

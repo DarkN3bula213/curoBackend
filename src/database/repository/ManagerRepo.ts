@@ -1,6 +1,5 @@
 import { InternalError } from "../../core/ApiError";
 import Logger from "../../core/Logger";
-import managerSchema from "../../routes/v1/manager/managerSchema";
 import Manager, { ManagerModel } from "../model/Manager";
 import Role, { RoleCode, RoleModel } from "../model/Role";
 import RoleRepo from "./RoleRepo";
@@ -16,8 +15,16 @@ export class ManagerRepo {
     let query: any = {
       mobile_number,
     };
-    if (isDirector) query["roles.role"] = { $elemMatch: RoleCode.DIRECTOR };
-    if (isAdmin) query["roles.role"] = { $elemMatch: RoleCode.SUPER_ADMIN };
+    if (isDirector) {
+      const id = await RoleRepo.findByRoleCode(RoleCode.DIRECTOR);
+      if (!id) throw new InternalError(`Role code not found in Manager Repo`);
+      query["roles.role"] = { $all: [id._id] };
+    }
+    if (isAdmin) {
+      const admin = await RoleRepo.findByRoleCode(RoleCode.SUPER_ADMIN);
+      query["roles.role"] = { $all: [admin._id] };
+    }
+
     return ManagerModel.findOne(query)
       .select("+roles +fcm_token")
       .populate({ path: "roles", match: { status: true } })

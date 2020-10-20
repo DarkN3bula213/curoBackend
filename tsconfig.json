@@ -11,9 +11,7 @@
     "paths": {
       "*": ["node_modules/*", "src/types/*"]
     },
-    "noImplicitUseStrict": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

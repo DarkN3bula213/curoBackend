@@ -18,7 +18,6 @@ export const workerSchema = new Schema({
   unit_id: {
     type: Schema.Types.String,
     required: true,
-    select: false,
   },
   aadhar_number: {
     type: Schema.Types.String,

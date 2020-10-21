@@ -14,12 +14,17 @@ export default class WorkerRepo {
   public static findById(worker_id: Types.ObjectId): Promise<Worker> {
     return WorkerModel.findById(worker_id).lean<Worker>().exec();
   }
-  //updateWorker();
-  //getWorkerById();
-  public static findByMobileNumber(mobile_number: string): Promise<Worker> {
-    return WorkerModel.findOne({ mobile_number })
-      .select("+unit_id")
+  public static async updateWorker(worker: Worker): Promise<any> {
+    return WorkerModel.updateOne({ _id: worker._id }, { $set: { ...worker } })
       .lean<Worker>()
       .exec();
+  }
+  public static async findByMobileNumber(
+    mobile_number: string
+  ): Promise<Worker> {
+    return WorkerModel.findOne({ mobile_number }).lean<Worker>().exec();
+  }
+  public static async fetchAllByUnitId(unit_id: string): Promise<Worker[]> {
+    return WorkerModel.find({ unit_id }).lean<Worker>().exec();
   }
 }

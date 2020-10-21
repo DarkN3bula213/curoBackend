@@ -5,7 +5,6 @@ export default {
     year: Joi.number().required().positive(),
     month: Joi.number().required().min(1).max(12),
     day: Joi.number().min(1).max(31).required(),
-    inTime: Joi.string().required(),
   }),
   getAttendenceByRange: Joi.object().keys({
     startDate: Joi.date().required(),

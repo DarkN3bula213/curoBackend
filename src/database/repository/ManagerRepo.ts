@@ -34,6 +34,7 @@ export class ManagerRepo {
   public static async fetchAll(): Promise<Manager[]> {
     return ManagerModel.find({}).lean<Manager>().exec();
   }
+
   public static async create(
     manager: Manager,
     roleCode: RoleCode[],

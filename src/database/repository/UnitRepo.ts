@@ -13,4 +13,9 @@ export default class UnitRepo {
     const newUnit = await UnitModel.create(unit);
     return newUnit.toObject();
   }
+  public static async updateUnit(unit: Unit): Promise<any> {
+    return UnitModel.updateOne({ _id: unit._id }, { $set: { ...unit } })
+      .lean()
+      .exec();
+  }
 }

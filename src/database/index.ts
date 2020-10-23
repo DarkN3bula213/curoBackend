@@ -19,8 +19,6 @@ const options = {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
 };
 
-Logger.debug(dbURI);
-
 // Create the database connection
 mongoose
   .connect(dbURI, options)

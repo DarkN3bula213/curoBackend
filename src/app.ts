@@ -5,6 +5,8 @@ import cors from "cors";
 import { corsUrl, environment } from "./config";
 import { NotFoundError, ApiError, InternalError } from "./core/ApiError";
 import routesV1 from "./routes/v1";
+import morgan from "morgan";
+import RequestLogger from "./core/RequestLogger";
 import "./database"; // initialize database
 
 process.on("uncaughtException", (e) => {
@@ -22,7 +24,7 @@ app.use(
   })
 );
 app.use(cors({ origin: corsUrl, optionsSuccessStatus: 200 }));
-
+app.use(morgan("tiny", { stream: RequestLogger }));
 // Routes
 app.use("/v1", routesV1);
 

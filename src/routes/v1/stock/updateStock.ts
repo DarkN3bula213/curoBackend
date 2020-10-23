@@ -2,7 +2,7 @@ import asyncHandler from "../../../helpers/asyncHandler";
 import express from "express";
 import StockRepo from "../../../database/repository/StockRepo";
 import { BadRequestError } from "../../../core/ApiError";
-import { SuccessMsgResponse, SuccessResponse } from "../../../core/ApiResponse";
+import { SuccessMsgResponse } from "../../../core/ApiResponse";
 import { ItemRepo } from "../../../database/repository/ItemRepo";
 import UnitRepo from "../../../database/repository/UnitRepo";
 

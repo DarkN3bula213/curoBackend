@@ -1,6 +1,7 @@
 import { InternalError } from "../../core/ApiError";
 import Stock, { StockModel } from "../model/Stock";
 import Unit from "../model/Unit";
+import Item from "../model/Item";
 import { Types } from "mongoose";
 
 export default class StockRepo {
@@ -17,11 +18,18 @@ export default class StockRepo {
   public static async fetchByUnit(unit: Unit): Promise<Stock[] | undefined> {
     return StockModel.find({ unit }).lean<Stock>().exec();
   }
+  public static async fetchByItem(item: Item): Promise<Stock[] | undefined> {
+    return StockModel.find({ item }).lean<Stock>().exec();
+  }
 
-  public static async updateStock(stock: Stock): Promise<any> {
+  public static async update(stock: Stock): Promise<any> {
     return StockModel.updateOne({ _id: stock._id }, { ...stock })
       .lean()
       .exec();
+  }
+
+  public static async findById(id: Types.ObjectId): Promise<Stock> {
+    return StockModel.findById(id).lean<Stock>().exec();
   }
 
   public static async removeStock(_id: Types.ObjectId): Promise<Stock> {

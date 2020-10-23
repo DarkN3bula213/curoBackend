@@ -101,3 +101,7 @@ info: Mongoose connection done
 info: server running on port : 3000
 info: Mongoose default connection open to mongodb://localhost:27017/curoBackend
 info: Mongoose connection done
+info: PUT /v1/stock/update 400 83 - 39.145 ms
+info: GET /v1/stock/fetch/all 200 246 - 9.112 ms
+info: PUT /v1/stock/update 200 60 - 99.242 ms
+info: GET /v1/stock/fetch/all 200 247 - 5.225 ms

@@ -44,17 +44,69 @@ router.get(
     logs.forEach((record) => {
       html += `<tr>
       <td> ${record.worker.name}</td>
-       <td>Date: ${record.day}/${record.month}/${record.year}</td>
-       <td>InTime: ${record.inTime}</td>
-       <td>Came to Work: ${record.markedOut}</td>
+       <td>${record.day}/${record.month}/${record.year}</td>
+       <td>${record.inTime}</td>
+       <td>${record.markedOut ? "Yes" : "No"}</td>
        </tr>`;
     });
     html += `</tbody></table>`;
     let renderer = new pdf();
     //renderer.setCSS();
     renderer.build(html);
-    Logger.info(path.resolve(__dirname, "pdf.css"));
-    Logger.info(renderer.html);
+    // Logger.info(renderer.html);
+    res.pdfFromHTML({
+      // express-pdf kicks in
+      filename: "report.pdf",
+      htmlContent: renderer.html,
+    });
+  })
+);
+
+router.get(
+  "/byUnitId",
+  validator(attendenceSchema.getAttendenceByRangeAndUnit),
+  asyncHandler(async (req, res: pdfResponse) => {
+    const { startDate, endDate, unit_id } = req.body;
+
+    if (startDate > endDate)
+      throw new BadRequestError("Start Date is larger than End Date in range");
+
+    const logs = await AttendenceRepo.fetchAttendenceByDateRangeAndUnit(
+      startDate,
+      endDate,
+      unit_id
+    );
+    if (!logs || logs.length === 0)
+      throw new BadRequestError(
+        "No Attendence Logs within this range and unit"
+      );
+
+    let html = `
+    <table>
+    <thead>
+      <tr>
+        <th>Worker</th>
+        <th>Unit Id</th>
+        <th>Date</th>
+        <th>InTime</th>
+        <th>Came to Work</th>
+      </tr>
+    </thead>
+    <tbody>`;
+    logs.forEach((record) => {
+      html += `<tr>
+      <td> ${record.worker.name}</td>
+      <td>${record.worker.unit_id}</tf>
+       <td>${record.day}/${record.month}/${record.year}</td>
+       <td>${record.inTime}</td>
+       <td>${record.markedOut ? "Yes" : "No"}</td>
+       </tr>`;
+    });
+    html += `</tbody></table>`;
+    let renderer = new pdf();
+    //renderer.setCSS();
+    renderer.build(html);
+    // Logger.info(renderer.html);
     res.pdfFromHTML({
       // express-pdf kicks in
       filename: "report.pdf",

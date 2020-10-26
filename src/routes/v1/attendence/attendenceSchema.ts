@@ -10,6 +10,11 @@ export default {
     startDate: Joi.date().required(),
     endDate: Joi.date().required(),
   }),
+  getAttendenceByRangeAndUnit: Joi.object().keys({
+    startDate: Joi.date().required(),
+    endDate: Joi.date().required(),
+    unit_id: Joi.string().required(),
+  }),
   markOut: Joi.object().keys({
     worker_mn: Joi.string().required(),
     year: Joi.number().required().positive(),

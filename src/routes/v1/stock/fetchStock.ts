@@ -10,7 +10,6 @@ import { SuccessResponse } from "../../../core/ApiResponse";
 import validator from "../../../helpers/validator";
 import stockSchema from "./stockSchema";
 import UnitRepo from "../../../database/repository/UnitRepo";
-import { toInteger } from "lodash";
 import { ItemRepo } from "../../../database/repository/ItemRepo";
 
 const router = express.Router();

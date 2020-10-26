@@ -11,16 +11,7 @@ const router = express.Router();
 router.put(
   "/",
   asyncHandler(async (req, res) => {
-    const {
-      id,
-      item_code,
-      qty,
-      weight,
-      piece,
-      packingsize,
-      noOfBags,
-      unit_code,
-    } = req.body;
+    const { id, item_code, qty, weight, piece, noOfBags, unit_code } = req.body;
 
     const stock = await StockRepo.findById(id);
     if (!stock)
@@ -36,7 +27,6 @@ router.put(
     if (qty) stock.qty = qty;
     if (weight) stock.weight = weight;
     if (piece) stock.piece = piece;
-    if (packingsize) stock.packingsize = packingsize;
     if (noOfBags) stock.noOfBags = noOfBags;
     if (unit_code) {
       const unit = await UnitRepo.findByUnitCode(unit_code);

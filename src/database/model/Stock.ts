@@ -10,7 +10,6 @@ export default interface Stock extends Document {
   qty: number;
   weight: number;
   piece: number;
-  packingsize: number;
   noOfBags: number;
   unit: Unit;
 }
@@ -30,10 +29,6 @@ const stockSchema = new Schema({
     required: true,
   },
   piece: {
-    type: Schema.Types.Number,
-    required: true,
-  },
-  packingsize: {
     type: Schema.Types.Number,
     required: true,
   },

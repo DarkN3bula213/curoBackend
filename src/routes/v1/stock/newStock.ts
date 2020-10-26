@@ -15,15 +15,7 @@ router.post(
   "/",
   validator(stockSchema.new),
   asyncHandler(async (req, res) => {
-    const {
-      item_code,
-      qty,
-      weight,
-      piece,
-      packingsize,
-      noOfBags,
-      unit_code,
-    } = req.body;
+    const { item_code, qty, weight, piece, noOfBags, unit_code } = req.body;
 
     const item = await ItemRepo.findByItemCode(item_code);
     if (!item)
@@ -38,7 +30,6 @@ router.post(
       qty,
       weight,
       piece,
-      packingsize,
       noOfBags,
       unit,
     } as Stock);

@@ -16,7 +16,7 @@ export class ItemRepo {
   }
 
   public static async findByItemCode(item_code: string): Promise<Item> {
-    return ItemModel.findOne({ item_code }).lean<Item>().exec();
+    return ItemModel.findOne({ item_code }).populate("item").lean<Item>().exec();
   }
   public static async findByItemId(_id: Types.ObjectId): Promise<Item> {
     return ItemModel.findById(_id).lean<Item>().exec();

@@ -12,7 +12,7 @@ export default class StockRepo {
   }
 
   public static async fetchAllStock(): Promise<Stock[]> {
-    return StockModel.find({}).lean<Stock>().exec();
+    return StockModel.find({}).populate("unit").lean<Stock>().exec();
   }
 
   public static async fetchByUnit(unit: Unit): Promise<Stock[] | undefined> {

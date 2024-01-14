@@ -1,4 +1,4 @@
-build/
+dist/
 node_modules/
 combined.log
 admin.json

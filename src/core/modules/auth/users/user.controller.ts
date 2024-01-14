@@ -46,3 +46,9 @@ export const logout = asyncHandler(async (req: Request, res: Response) => {
     new SuccessResponse("Logout successful", null).send(res);
 }
 );
+
+
+export const getUsers = asyncHandler(async (req: Request, res: Response) => {
+  const users = await UserModel.find().lean().exec();
+  new SuccessResponse("Success", { users }).send(res);
+});

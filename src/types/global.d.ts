@@ -15,3 +15,31 @@ declare module "*.json" {
   export const client_x509_cert_url: any;
   export default value;
 }
+
+
+
+ 
+import { Request } from "express";
+
+import Keystore from "../database/model/Keystore";
+import ApiKey from "../core/modules/auth/apiKey/apiKey.model"; 
+import User from "../core/modules/auth/users/user.model";
+
+declare interface PublicRequest extends Request {
+  apiKey: ApiKey;
+}
+
+declare interface RoleRequest extends PublicRequest {
+  currentRoleCodes: string[];
+}
+
+declare interface ProtectedRequest extends RoleRequest {
+  user: User;
+  accessToken: string;
+  keystore: Keystore;
+}
+
+declare interface Tokens {
+  accessToken: string;
+  refreshToken: string;
+}

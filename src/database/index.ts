@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
-import Logger from "../core/Logger";
-import { db, environment } from "../config";
-import { RoleModel, RoleCode } from "./model/Role";
 
+
+
+import  {env}  from "../env";
+import { Logger } from "../lib/logger/logger";
+ const log = new Logger(__filename)
 // Build the connection string
-const dbURI: string = environment === "development" ? db.devUrl : db.prodUrl;
+const dbURI= env.isDevelopment ? env.db.dev: env.db.prod;
 
 const options = {
   useNewUrlParser: true,
@@ -18,51 +20,38 @@ const options = {
   connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
 };
-
-// Create the database connection
-mongoose
-  .connect(dbURI, options)
-  .then(() => {
-    Logger.info("Mongoose connection done");
-  })
-  .catch((e) => {
-    Logger.info("Mongoose connection error");
-    Logger.error(e);
-  });
-
-// CONNECTION EVENTS
-// When successfully connected
-mongoose.connection.on("connected", () => {
-  Logger.info("Mongoose default connection open to " + dbURI);
-  mongoose.connection.collection("roles").countDocuments(async (err, count) => {
-    if (count == 0) {
-      const roles = Object.values(RoleCode).map((role) => {
-        return {
-          role,
-        };
-      });
-      RoleModel.insertMany(roles).catch((err) => Logger.info(err));
-      Logger.info("Roles db init successful");
-    }
-  });
-});
-
-// If the connection throws an error
-mongoose.connection.on("error", (err) => {
-  Logger.error("Mongoose default connection error: " + err);
-});
-
-// When the connection is disconnected
-mongoose.connection.on("disconnected", () => {
-  Logger.info("Mongoose default connection disconnected");
-});
-
-// If the Node process ends, close the Mongoose connection
-process.on("SIGINT", () => {
-  mongoose.connection.close(() => {
-    Logger.info(
-      "Mongoose default connection disconnected through app termination"
-    );
-    process.exit(0);
-  });
-});
+ 
+  export const connect = (app: { emit: (arg0: string) => void; }) => {
+    const options = {
+      useNewUrlParser: true,
+      autoIndex: false, // Don't build indexes
+      maxPoolSize: 10, // Maintain up to 10 socket connections
+    };
+  
+    const no_of_retries = 25;
+  
+    const connectWithRetry = ( ) => {
+      
+      mongoose.Promise = global.Promise;
+      log.info("MongoDB connection with retry");
+      mongoose
+        .connect(env.mongo.uri)
+        .then(() => {
+          log.info(`Connected to MongoDB: ${mongoose.connection.host}`);
+          app.emit("ready");
+        })
+        .catch((err) => {
+          log.error(
+            "MongoDB connection unsuccessful, retry after 2 seconds.",
+            err
+          );
+          setTimeout(connectWithRetry, 2000);
+        }).finally(()=>{
+          process.on("SIGINT", () => {
+            mongoose.connection.close();
+              process.exit(0);
+            });
+        })
+    };
+    connectWithRetry();
+  };

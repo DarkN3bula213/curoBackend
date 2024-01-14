@@ -1,9 +1,12 @@
-import Logger from "./core/Logger";
-import { port } from "./config";
-import app from "./app";
 
+import { port } from "./config";
+import {app} from "./app";
+import { Logger as log } from "./lib/logger/logger";
+import { env } from "./env";
+const Logger = new log(__filename)
 app
-  .listen(port, () => {
-    Logger.info(`server running on port : ${port}`);
+  .listen(env.app.port, () => {
+    Logger.info(`server running on port : ${env.app.port}`);
   })
-  .on("error", (e) => Logger.error(e));
+  .on("error", (e) => Logger.error(e.message));
+  

@@ -23,7 +23,18 @@ import { Request } from "express";
 
 import Keystore from "../database/model/Keystore";
 import ApiKey from "../core/modules/auth/apiKey/apiKey.model"; 
-import User from "../core/modules/auth/users/user.model";
+export default interface User {
+  _id: Types.ObjectId;
+  name?: string;
+  profilePicUrl?: string;
+  email?: string;
+  password?: string;
+  roles: Role[];
+  verified?: boolean;
+  status?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
 
 declare interface PublicRequest extends Request {
   apiKey: ApiKey;

@@ -3,8 +3,8 @@ import bcrypt from "bcrypt";
 import {RoleDocument, RoleModel} from "../roles/role.model";
 
 // Constants for document and collection names
-const DOCUMENT = "Account";
-const COLLECTION = "Accounts";
+const DOCUMENT = "users";
+
 
 export interface UserDocument extends Document {
   username: string;

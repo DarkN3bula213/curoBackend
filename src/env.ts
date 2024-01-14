@@ -38,23 +38,29 @@ export const env = {
     port: normalizePort(process.env.PORT || getOsEnv("APP_PORT")),
     // banner: toBool(getOsEnv("APP_BANNER")),
   },
-  cors:{
-    url:getOsEnv('CORS_URL')
+  cors: {
+    url: getOsEnv("CORS_URL"),
   },
   log: {
     // level: getOsEnv("LOG_LEVEL"),
     // output: getOsEnv("LOG_OUTPUT"),
   },
   db: {
-    prod:getOsEnvOptional('PRODUCTION'),
-    dev:getOsEnv("MONGO_URI")
+    prod: getOsEnvOptional("PRODUCTION"),
+    dev: getOsEnv("MONGO_URI"),
+    host: getOsEnvOptional("DB_HOST"),
+    port: toNumber(getOsEnvOptional("DB_PORT")),
+    admin: getOsEnvOptional("DB_ADMIN"),
+    password: getOsEnvOptional("DB_USER_PWD"),
+    user: getOsEnvOptional("DB_USER"),
+    name: getOsEnvOptional("DB_NAME"),
     // type: getOsEnv("TYPEORM_CONNECTION"),
     // host: getOsEnvOptional("TYPEORM_HOST"),
 
     // username: getOsEnvOptional("TYPEORM_USERNAME"),
     // password: getOsEnvOptional("TYPEORM_PASSWORD"),
     // database: getOsEnv("TYPEORM_DATABASE"),
- 
+
     // logging: toBool(getOsEnv("TYPEORM_LOGGING")),
   },
   mongo: {
@@ -62,10 +68,11 @@ export const env = {
     // route: getOsEnv("GRAPHQL_ROUTE"),
     // editor: toBool(getOsEnv("GRAPHQL_EDITOR")),
   },
-  redis:{
-    uri:getOsEnv("REDIS_URI"),
-    // route: getOsEnv("GRAPHQL_ROUTE"),
-    // editor: toBool(getOsEnv("GRAPHQL_EDITOR")),
+  redis: {
+    uri: getOsEnv("REDIS_URI"),
+    host: getOsEnvOptional("REDIS_HOST"),
+    port: toNumber(getOsEnvOptional("REDIS_PORT")),
+    password: getOsEnvOptional("REDIS_PASSWORD"),
   },
   // token:{
   //   secret: getOsEnv("TOKEN_SECRET"),

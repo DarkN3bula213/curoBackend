@@ -4,3 +4,4 @@ combined.log
 admin.json
 admin64.txt
 *.log
+.env

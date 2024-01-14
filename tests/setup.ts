@@ -19,3 +19,11 @@ afterAll(async () => {
   await mongoose.disconnect();
   await mongo.stop();
 });
+
+import dotenv from "dotenv";
+dotenv.config({ path: "./tests/.env.test" });
+
+test("MongoDB connects successfully", async () => {
+  const connectionState = mongoose.connection.readyState;
+  expect(connectionState).toBe(1); // 1 for connected
+});

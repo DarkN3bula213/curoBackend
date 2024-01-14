@@ -15,7 +15,7 @@ function startServer() {
 }
 
 connectDB(app);
-// connectRedis();
+connectRedis();
 app.on("ready", () => {
   startServer();
 }); 

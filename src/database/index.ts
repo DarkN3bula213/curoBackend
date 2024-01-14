@@ -20,8 +20,8 @@ const dbURI= env.isDevelopment ? env.db.dev: env.db.prod;
       mongoose.Promise = global.Promise;
       log.info("MongoDB connection with retry");
       mongoose
-        .connect(env.mongo.uri)
-        // .connect(dbURL)
+        // .connect(env.mongo.uri)
+        .connect(dbURL)
         .then(() => {
           log.info(`Connected to MongoDB: ${mongoose.connection.host}`);
           app.emit("ready");

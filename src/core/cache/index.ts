@@ -4,7 +4,9 @@ import { env } from "../../env";
 import { Logger } from "../../lib/logger/logger";
 const { redis } = env;
 const log = new Logger(__filename);
+// const redisURL = `redis://:${redis.password}@localhost:${redis.port}`;
 const redisURL = `redis://:${redis.password}@${redis.host}:${redis.port}`;
+log.debug(redisURL);
 const redisUrl = `redis://localhost:6379`;
 
 
@@ -14,7 +16,7 @@ export const connectRedis = async () => {
       url: redisURL,
     });
     try {
-        await redisClient.connect();
+        await redisClient.connect(); 
         log.info("Redis client connected...");
     } catch (err: any) {
         log.error(err.message);
@@ -31,6 +33,7 @@ export const connectRedis = async () => {
           await redisClient.disconnect();
         });
     }
+  return redisClient;
 }
 // const connectRedis = async () => {
 //   try {
@@ -61,3 +64,35 @@ export const connectRedis = async () => {
 // });
 
 // export default redisClient;
+
+
+export async function connectCache(app: { emit: (arg0: string) => void; }) {
+   const redisClient = createClient({
+     url: redisURL,
+   });
+new global.Promise((resolve, reject) => {
+    redisClient.on("connect", () => {
+ log.info("Cache is connecting");
+      resolve(log.debug("Cache is connecting"));
+    });
+    redisClient.on("ready", () => {
+      
+      resolve( log.info("Cache is ready") );
+    });
+    redisClient.on("end", () => {
+    
+      reject(  log.info("Cache disconnected"));
+    });
+    redisClient.on("reconnecting", () => {
+    
+      resolve(  log.info("Cache is reconnecting"));
+    });
+    redisClient.on("error", (e) => {
+      log.error(e.message);
+      reject();
+    });
+});
+  // const redisClient = await connectRedis();
+  app.emit("ready");
+  return redisClient;
+}

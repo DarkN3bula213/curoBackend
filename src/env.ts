@@ -46,14 +46,14 @@ export const env = {
     // output: getOsEnv("LOG_OUTPUT"),
   },
   db: {
+    name: getOsEnvOptional("DB_NAME"),
+    host: getOsEnvOptional("DB_HOST"),
+    port: toNumber(getOsEnv("DB_PORT")),
+    user: getOsEnvOptional("DB_USER"),
+    password: getOsEnvOptional("DB_USER_PWD"), 
     prod: getOsEnvOptional("PRODUCTION"),
     dev: getOsEnv("MONGO_URI"),
-    host: getOsEnvOptional("DB_HOST"),
-    port: toNumber(getOsEnvOptional("DB_PORT")),
     admin: getOsEnvOptional("DB_ADMIN"),
-    password: getOsEnvOptional("DB_USER_PWD"),
-    user: getOsEnvOptional("DB_USER"),
-    name: getOsEnvOptional("DB_NAME"),
     // type: getOsEnv("TYPEORM_CONNECTION"),
     // host: getOsEnvOptional("TYPEORM_HOST"),
 
@@ -71,33 +71,32 @@ export const env = {
   redis: {
     uri: getOsEnv("REDIS_URI"),
     host: getOsEnvOptional("REDIS_HOST"),
-    port: toNumber(getOsEnvOptional("REDIS_PORT")),
+    port: toNumber(getOsEnv("REDIS_PORT")),
     password: getOsEnvOptional("REDIS_PASSWORD"),
+    upstash: getOsEnvOptional("UPSTASH_URL"),
   },
-  // token:{
-  //   secret: getOsEnv("TOKEN_SECRET"),
-  //   public:{
-  //     access: getDecodedOsEnv("ACCESS_TOKEN_PUBLIC_KEY"),
-  //     refresh: getDecodedOsEnv("REFRESH_TOKEN_PUBLIC_KEY"),
-  //   },
-  //   private:{
-  //     access: getDecodedOsEnv("ACCESS_TOKEN_PRIVATE_KEY"),
-  //     refresh: getDecodedOsEnv("REFRESH_TOKEN_PRIVATE_KEY"),
-  //   },
-  //   access:{
-  //     private:getDecodedOsEnv("ACCESS_TOKEN_PRIVATE_KEY"),
-  //     public:getDecodedOsEnv("ACCESS_TOKEN_PUBLIC_KEY"),
-  //     // public: getOsEnv("ACCESS_TOKEN_PUBLIC_KEY"),
-  //     // private: getOsEnv("ACCESS_TOKEN_PRIVATE_KEY"),
-  //     // expiration: getOsEnv("ACCESS_TOKEN_EXPIRATION"),
-  //   },
-  //   refresh:{
-  //     private:getDecodedOsEnv("REFRESH_TOKEN_PRIVATE_KEY"),
-  //     public:getDecodedOsEnv("REFRESH_TOKEN_PUBLIC_KEY"),
-  //     // public: getOsEnv("REFRESH_TOKEN_PUBLIC_KEY"),
-  //     // private: getOsEnv("REFRESH_TOKEN_PRIVATE_KEY"),
-  //     // expiration: getOsEnv("REFRESH_TOKEN_EXPIRATION"),
-  //   }
-
-  // }
+  token: {
+    public: {
+      access: getDecodedOsEnv("ACCESS_TOKEN_PUBLIC_KEY"),
+      refresh: getDecodedOsEnv("REFRESH_TOKEN_PUBLIC_KEY"),
+    },
+    private: {
+      access: getDecodedOsEnv("ACCESS_TOKEN_PRIVATE_KEY"),
+      refresh: getDecodedOsEnv("REFRESH_TOKEN_PRIVATE_KEY"),
+    },
+    access: {
+      private: getDecodedOsEnv("ACCESS_TOKEN_PRIVATE_KEY"),
+      public: getDecodedOsEnv("ACCESS_TOKEN_PUBLIC_KEY"),
+      // public: getOsEnv("ACCESS_TOKEN_PUBLIC_KEY"),
+      // private: getOsEnv("ACCESS_TOKEN_PRIVATE_KEY"),
+      // expiration: getOsEnv("ACCESS_TOKEN_EXPIRATION"),
+    },
+    refresh: {
+      private: getDecodedOsEnv("REFRESH_TOKEN_PRIVATE_KEY"),
+      public: getDecodedOsEnv("REFRESH_TOKEN_PUBLIC_KEY"),
+      // public: getOsEnv("REFRESH_TOKEN_PUBLIC_KEY"),
+      // private: getOsEnv("REFRESH_TOKEN_PRIVATE_KEY"),
+      // expiration: getOsEnv("REFRESH_TOKEN_EXPIRATION"),
+    },
+  },
 };

@@ -44,7 +44,7 @@ services:
     ports:
       - '$DB_PORT:27017'
     volumes:
-      - ./addon/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./addons/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
         # The named volume dbdata will persist the data stored in Mongo’s default data directory, /data/db.
         # This will ensure that you don’t lose data in cases where you stop or remove containers.
       - dbdata:/data/db

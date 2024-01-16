@@ -1,20 +1,20 @@
 import Joi from "joi";
 
 export default {
-    register: Joi.object().keys({
-        studentId: Joi.string().required(),
-    }),
-    bulk: Joi.object().keys({
-        studentIds: Joi.array().items(Joi.string().required()).required(),
-    
-    }),
-    getPaymentsByClassId: Joi.object().keys({
-        classId: Joi.string().required(),
-    }),
-    removePayment: Joi.object().keys({
-        id: Joi.string().required(),
-    }),
-}
+  register: Joi.object().keys({
+    studentId: Joi.string().required(),
+  }),
+  bulk: Joi.object().keys({
+    studentIds: Joi.array().items(Joi.string().required()).required(),
+  }),
+  getPaymentsByClassId: Joi.object().keys({
+    classId: Joi.string().required(),
+  }),
+  removePayment: Joi.object().keys({
+    studentId: Joi.string().required(),
+    payID: Joi.string().required(),
+  }),
+};
 
 
 const paymentEntrySchema = Joi.object({

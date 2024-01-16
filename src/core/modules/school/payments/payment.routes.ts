@@ -19,7 +19,7 @@ router.post(
 router.get("/", controller.getPayments);
 router.get("/:classId", controller.getPaymentsByClassId);
 router.delete(
-  "/:id",
+  "/remove",
   validator(paymentSchema.removePayment),
   controller.removePayment
 );

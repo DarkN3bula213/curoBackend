@@ -4,18 +4,26 @@
     "esModuleInterop": true,
     "target": "ES2019",
     "noImplicitAny": true,
-    
+
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
-    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types", "src/types"],
+     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*", "src/types/*"]
-      // "@lib/*": ["src/lib/*"]
-      // "@core/*": ["src/core/*"]
+      "@components/*": ["components/*"],
+      "@lib/*": ["src/lib/*"]
     },
+
     "skipLibCheck": true
   },
+ 
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "src/**/_*"]
+  "exclude": ["node_modules", "src/**/_*"],
+
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  }
 }
+

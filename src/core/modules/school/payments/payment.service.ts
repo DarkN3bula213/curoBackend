@@ -2,11 +2,11 @@ import { calculateFee } from "..//../../../lib/utils/calculateFee";
 import { ClassModel } from "../classses/class.model";
 import { Student } from "../students/student.model";
 import { getPayID } from "..//../../../lib/utils/getPayID";
-import { PaymentModel } from "./payment.model";
+import { IPayment, PaymentModel } from "./payment.model";
 import { BadRequestError } from "../../../../lib/api";
-import mongoose from "mongoose";
-import { Logger } from "../../../../lib/logger/logger";
-const logger = new Logger(__filename);
+import mongoose, { Types } from "mongoose";
+import { Logger as log } from "../../../../lib/logger/logger";
+const Logger = new log(__filename);
 interface PaymentData {
   studentId: mongoose.Types.ObjectId;
   classId: mongoose.Types.ObjectId;
@@ -36,6 +36,8 @@ class paymentService {
         paymentsData.push({
           studentId: student._id,
           classId: classDoc._id,
+          className: classDoc.className,
+          section: classDoc.section,
           payID: payId,
           amount: amount,
         });
@@ -43,7 +45,7 @@ class paymentService {
 
       return paymentsData;
     } catch (error) {
-      logger.error(error.message);
+      Logger.error(error.message);
       throw new BadRequestError(error.message);
     }
   }
@@ -63,7 +65,7 @@ class paymentService {
           .exec();
       }
     } catch (error) {
-      logger.error(error.message);
+      Logger.error(error.message);
       throw new BadRequestError(error.message);
     }
   }
@@ -74,46 +76,81 @@ class paymentService {
       const payments = await PaymentModel.insertMany(paymentsData);
       return payments;
     } catch (error) {
-      logger.error(error.message);
+      Logger.error(error.message);
       throw new BadRequestError(error.message);
     }
   }
-  async addSinglePayment(studentId: string): Promise<any> {
-    const payId = getPayID();
-    const student = await this.student.findById(studentId);
+  async addSinglePayment(studentId: Types.ObjectId): Promise<any> {
+    const id = new mongoose.Types.ObjectId(studentId);
+    console.log("studentId", studentId, "id", id);
+    try {
+      const payId = getPayID();
+      const student = await this.student.findOne({
+        _id: studentId,
+      });
+      console.log("student", student);
+      if (!student) {
+        throw new BadRequestError("Student not found");
+      }
 
-    const classDoc = await this.classModel.findById(student.classId);
+      const classDoc = await this.classModel.findById(student.classId);
+      if (!classDoc) {
+        throw new BadRequestError("Class not found");
+      }
 
-    const amount = calculateFee(classDoc.fee, student.feeType);
+      const amount = calculateFee(classDoc.fee, student.feeType);
+      console.log(
+        "amount",
+        amount,
+        "classDoc.fee",
+        classDoc.fee,
+        "student.feeType",
+        student.feeType
+      );
+      const newPayment: IPayment = new PaymentModel({
+        studentId: student._id,
+        className: classDoc.className,
+        section: classDoc.section,
+        classId: classDoc._id,
+        payID: payId,
+        amount: amount,
+      });
 
-    const newPayment = new PaymentModel({
-      studentId: student._id,
-      classId: classDoc._id,
-      payID: payId,
-      amount: amount,
-    });
+      const payment = await newPayment.save();
 
-    const payment = await newPayment.save();
-
-    const paymentHistoryEntry = {
-      paymentId: payment._id,
-      payID: payment.payID,
-      paid: true,
-    };
-    await this.student
-      .findByIdAndUpdate(payment.studentId, {
-        $push: { paymentHistory: paymentHistoryEntry },
-      })
-      .exec();
-    return payment;
+      const paymentHistoryEntry = {
+        paymentId: payment._id,
+        payID: payment.payID,
+        paid: true,
+      };
+      await this.student
+        .findByIdAndUpdate(payment.studentId, {
+          $push: { paymentHistory: paymentHistoryEntry },
+        })
+        .exec();
+      return payment;
+    } catch (error) {
+      Logger.error(error.message);
+      throw new BadRequestError(error.message);
+    }
   }
 
-  async removePayment(payID: string, studentId: string): Promise<void> {
-       await PaymentModel.findOneAndDelete({ payID, studentId });
+  async removePayment(studentId: string, payID: string): Promise<void> {
+    const payment = await PaymentModel.findOneAndDelete({ payID, studentId });
+    if (!payment) {
+      throw new BadRequestError("Payment not found");
+    } else {
+      Logger.info("Payment deleted successfully");
+    }
 
-       await this.student.findByIdAndUpdate(studentId, {
-         $pull: { paymentHistory: { payID } },
-       });
+    const student = await this.student.findByIdAndUpdate(studentId, {
+      $pull: { paymentHistory: { payID } },
+    });
+    if (!student) {
+      throw new BadRequestError("Student not found");
+    } else {
+      Logger.info("Student payment history updated successfully");
+    }
   }
 }
 

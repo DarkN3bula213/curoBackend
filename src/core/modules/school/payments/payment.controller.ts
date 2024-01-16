@@ -3,46 +3,18 @@ import { ClassModel, IClass, getClassById } from "../classses/class.model";
 import { getPayID } from "../../../../lib/utils/getPayID";
 import { PaymentModel } from "./payment.model";
 import { BadRequestError, SuccessResponse } from "../../../../lib/api";
-import { PaymentHistory, Student } from "../students/student.model";
-import { calculateFee } from "../../../../lib/utils/calculateFee";
+
+
 import { Logger } from "../../../../lib/logger/logger";
-import mongoose, { Types } from "mongoose";
+
 import paymentService from "./payment.service";
+ 
 const logger = new Logger(__filename);
 
 export const registerPayment = asyncHandler(async (req, res) => {
   const { studentId } = req.body;
-  const payId = getPayID();
 
-  const id = new Types.ObjectId(studentId);
-  const student = await Student.findById(id);
-
-  if (!student) {
-    throw new BadRequestError("Student not found");
-  }
-  const classDoc = await ClassModel.findById(student.classId);
-  if (!classDoc) {
-    throw new BadRequestError("Class not found");
-  }
-  const amount = calculateFee(classDoc.fee, student.feeType);
-  const newPayment = new PaymentModel({
-    studentId: student._id,
-    classId: classDoc._id,
-    payID: payId,
-    amount: amount,
-  });
-  const payment = await newPayment.save();
-
-  // Update Student Document with Payment History
-  const paymentHistoryEntry: PaymentHistory = {
-    paymentId: payment._id,
-    payID: payId,
-    paid: true,
-  };
-
-  student.paymentHistory.push(paymentHistoryEntry);
-  await student.save();
-
+  const payment = await paymentService.addSinglePayment(studentId);
   return new SuccessResponse("Payment created successfully", payment).send(res);
 });
 
@@ -53,20 +25,18 @@ export const registerBulkPayments = asyncHandler(async (req, res) => {
   if (!Array.isArray(studentIds) || studentIds.length === 0) {
     throw new BadRequestError("studentIds must be a non-empty array");
   }
- try {
-  const paymentsData = await paymentService.gatherPaymentData(studentIds);
-  const payments = await paymentService.insertBulkPayments(paymentsData);
-  await paymentService.updateStudentsPaymentHistory(payments);
-  return new SuccessResponse(
-    "Bulk payments registered successfully",
-    payments
-  ).send(res);
-
- } catch (error) {
+  try {
+    const paymentsData = await paymentService.gatherPaymentData(studentIds);
+    const payments = await paymentService.insertBulkPayments(paymentsData);
+    await paymentService.updateStudentsPaymentHistory(payments);
+    return new SuccessResponse(
+      "Bulk payments registered successfully",
+      payments
+    ).send(res);
+  } catch (error) {
     logger.error(error);
     throw new BadRequestError("Error registering bulk payments");
-  
- }
+  }
 });
 
 export const getPayments = asyncHandler(async (req, res) => {
@@ -85,8 +55,9 @@ export const getPaymentsByClassId = asyncHandler(async (req, res) => {
 });
 
 export const removePayment = asyncHandler(async (req, res) => {
-  const { id } = req.params;
-  const deletedPayment = await PaymentModel.findOneAndDelete({ _id: id });
+  const { studentId, payID } = req.body;
+  if (!studentId || !payID) throw new BadRequestError("Invalid params");
+  const deletedPayment = await paymentService.removePayment(studentId, payID);
   return new SuccessResponse(
     "Payment deleted successfully",
     deletedPayment

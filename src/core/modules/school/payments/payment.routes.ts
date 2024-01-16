@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as controller from "./payment.controller";
 import validator from "../../../../lib/helpers/validator";
-import paymentSchema from "./payment.schema";
+import paymentSchema, { insertMany } from "./payment.schema";
 import authentication from "../../../../middleware/authentication";
 import authorisation from "../../../../middleware/authorisation";
 import { role } from "../../../../lib/helpers/role";
@@ -23,5 +23,11 @@ router.delete(
   validator(paymentSchema.removePayment),
   controller.removePayment
 );
+
+
+router.route("/bulk").post(
+  validator(paymentSchema.bulk),
+  controller.registerBulkPayments
+)
 
 export default router;

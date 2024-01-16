@@ -21,9 +21,9 @@ export const errorHandler = (
     Logger.error(
       `500 - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`
     );
-    Logger.error(err.message);
+
     if (env.isDevelopment) {
-       Logger.error(err.message);
+
       return res.status(500).send(err);
     }
     ApiError.handle(new InternalError(), res);

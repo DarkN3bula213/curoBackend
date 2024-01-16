@@ -5,7 +5,7 @@ import { ClassModel, IClass } from "../classses/class.model";
 
 const DOCUMENT = "payments";
 const COLLECTION = "payments";
-interface IPayment extends Document {
+export interface IPayment extends Document {
     studentId: IStudent["_id"];
     classId: IClass["_id"];
     amount: number;

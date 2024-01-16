@@ -1,25 +1,22 @@
 import asyncHandler from "../../../../lib/helpers/asyncHandler";
-import { ClassModel } from "../classses/class.model";
+import { ClassModel, IClass, getClassById } from "../classses/class.model";
 import { getPayID } from "../../../../lib/utils/getPayID";
 import { PaymentModel } from "./payment.model";
 import { BadRequestError, SuccessResponse } from "../../../../lib/api";
-import { Student } from "../students/student.model";
+import { PaymentHistory, Student } from "../students/student.model";
 import { calculateFee } from "../../../../lib/utils/calculateFee";
 import { Logger } from "../../../../lib/logger/logger";
-import { Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
+import paymentService from "./payment.service";
 const logger = new Logger(__filename);
+
 export const registerPayment = asyncHandler(async (req, res) => {
   const { studentId } = req.body;
   const payId = getPayID();
 
-
-  logger.warn(`payId: ${payId}`);
-  logger.warn(`studentId: ${studentId}`);
-
   const id = new Types.ObjectId(studentId);
-  const student = await Student.findById(id );
+  const student = await Student.findById(id);
 
-  logger.debug(`student: ${student}`);
   if (!student) {
     throw new BadRequestError("Student not found");
   }
@@ -30,12 +27,46 @@ export const registerPayment = asyncHandler(async (req, res) => {
   const amount = calculateFee(classDoc.fee, student.feeType);
   const newPayment = new PaymentModel({
     studentId: student._id,
-    classId:classDoc._id,
+    classId: classDoc._id,
     payID: payId,
     amount: amount,
   });
   const payment = await newPayment.save();
+
+  // Update Student Document with Payment History
+  const paymentHistoryEntry: PaymentHistory = {
+    paymentId: payment._id,
+    payID: payId,
+    paid: true,
+  };
+
+  student.paymentHistory.push(paymentHistoryEntry);
+  await student.save();
+
   return new SuccessResponse("Payment created successfully", payment).send(res);
+});
+
+export const registerBulkPayments = asyncHandler(async (req, res) => {
+  const { studentIds } = req.body;
+
+  // Check if studentIds is an array and not empty
+  if (!Array.isArray(studentIds) || studentIds.length === 0) {
+    throw new BadRequestError("studentIds must be a non-empty array");
+  }
+ try {
+  const paymentsData = await paymentService.gatherPaymentData(studentIds);
+  const payments = await paymentService.insertBulkPayments(paymentsData);
+  await paymentService.updateStudentsPaymentHistory(payments);
+  return new SuccessResponse(
+    "Bulk payments registered successfully",
+    payments
+  ).send(res);
+
+ } catch (error) {
+    logger.error(error);
+    throw new BadRequestError("Error registering bulk payments");
+  
+ }
 });
 
 export const getPayments = asyncHandler(async (req, res) => {

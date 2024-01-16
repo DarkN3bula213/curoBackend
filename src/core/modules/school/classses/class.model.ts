@@ -34,3 +34,9 @@ const schema = new Schema<IClass>({
 })
 
 export const ClassModel = mongoose.model<IClass>(DOCUMENT, schema, COLLECTION);
+
+
+
+export async function getClassById(id: string) {
+    return await ClassModel.findById(id);
+}

@@ -1,9 +1,12 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, Types } from "mongoose";
 
 import { ClassModel, IClass } from "../classses/class.model";
+import { IPayment, PaymentModel } from "../payments/payment.model";
 
 const DOCUMENT = "student";
 const COLLECTION = "students";
+
+
 export interface IStudent extends Document {
   admission_date: Date;
   registration_no: string;
@@ -14,6 +17,7 @@ export interface IStudent extends Document {
   father_name: string;
   gender: string;
   dob: Date;
+  paymentHistory?: PaymentHistory[];
   address: string;
   phone: number;
   feeType: string;
@@ -63,6 +67,22 @@ const studentMODEL = new Schema<IStudent>(
     dob: {
       type: Date,
       // required: true,
+    },
+    paymentHistory: {
+      type: [
+        {
+          paymentId: {
+            type: Schema.Types.ObjectId,
+            ref: 'payments',
+          },
+          payID: {
+            type: String,
+          },
+          paid: {
+            type: Boolean,
+          },
+        },
+      ],
     },
     address: {
       type: String,
@@ -115,7 +135,7 @@ studentMODEL.pre<IStudent>("save", async function (next) {
   next();
 });
 
-export const Student = mongoose.model<IStudent>(
+export const Student: mongoose.Model<IStudent> = mongoose.model<IStudent>(
   DOCUMENT,
   studentMODEL,
   COLLECTION
@@ -123,4 +143,8 @@ export const Student = mongoose.model<IStudent>(
 
 
 
- 
+export  interface PaymentHistory {
+   paymentId: IPayment["_id"];
+   payID: string;
+   paid: boolean; // Indicates if the payment was made
+ }

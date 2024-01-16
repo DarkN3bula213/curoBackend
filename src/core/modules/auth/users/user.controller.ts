@@ -10,6 +10,12 @@ import UserModel from "./user.model";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import { createTokens, signToken } from "../../../../lib/utils/jwt";
+
+
+
+
+
+
 export const register = asyncHandler(async (req, res) => {
   const { email, username, password } = req.body;
   const duplicate = await UserModel.duplicateCheck(email);

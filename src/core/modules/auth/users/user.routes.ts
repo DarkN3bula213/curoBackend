@@ -17,13 +17,13 @@ import disectToken from "../../../../core/auth/disect-token";
 const Logger = new log(__filename);
 const router = Router();
 
+router.route("/login").post(validator(userSchema.login), controller.login);
 router.use(role(RoleCode.LEARNER));
 /*---------------------------------------------------------------------------*/
 router.get("/", (req: RoleRequest, res: Response) => {
   Logger.info(`${req.currentRoleCodes}`), res.sendStatus(200);
 });
 
-router.route("/login").post(validator(userSchema.login), controller.login);
 
 router
   .route("/register")

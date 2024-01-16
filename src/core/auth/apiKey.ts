@@ -21,8 +21,8 @@ export default router.use(
     if (!key) throw new ForbiddenError();
 
     const apiKey = await findByKey(key);
+    Logger.info(apiKey?.permissions[0]);
     if (!apiKey) throw new ForbiddenError();
-    Logger.info(apiKey.permissions[0]);
 
     req.apiKey = apiKey;
     return next();

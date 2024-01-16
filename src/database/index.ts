@@ -56,7 +56,7 @@ mongoose
     schema.pre("updateOne", setRunValidators);
     schema.pre("update", setRunValidators);
   })
-  .connect(dbURI)
+  .connect(env.mongo.uri)
   .then(() => {
     Logger.info("Mongoose connection done");
   })

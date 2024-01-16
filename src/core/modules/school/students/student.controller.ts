@@ -62,9 +62,9 @@ export const getByClassSection = asyncHandler(async (req, res) => {
   new SuccessResponse("Students fetched successfully", students).send(res);
 });
 export const getStudentsById = asyncHandler(async (req, res) => {
-  console.dir(req);
+
   const { id } = req.params;
-  const students = await Student.findById(id, "_id name className section")
+  const students = await Student.findById(id)
     .lean()
     .exec();
 

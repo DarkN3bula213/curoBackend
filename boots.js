@@ -1,11 +1,41 @@
-const tsConfig = require("./tsconfig.json");
-const tsConfigPaths = require("tsconfig-paths");
+ 
 
-const baseUrl = "./"; // Either absolute or relative path. If relative it's resolved to current working directory.
-const cleanup = tsConfigPaths.register({
-  baseUrl,
-  paths: tsConfig.compilerOptions.paths,
-});
 
-// When path registration is no longer needed
-cleanup();
+
+
+  //
+
+  /**
+   * 
+   * docker run (image) (command)
+   * 
+   * docker restart (container)
+   * 
+   * 
+   * docker run --name (container-name) (image)
+   * 
+   * docker pause (container)
+   * 
+   * docker run -p (host):[container-port] (image)
+   * 
+   * 
+   * docker unpause (container)
+   * 
+   * 
+   * docker run --Im (image)
+   * 
+   * docker wait (container)
+   * 
+   * docker run -d (image)
+   * 
+   * docker kill (container)
+   * 
+   * 
+   * docker run -it (image)
+   * 
+   * docker attach [container] 
+   * 
+   * docker start (container)
+   * 
+   * docker image prune
+   */ 

@@ -42,3 +42,26 @@ export const convertStudentData = asyncHandler(async (req, res) => {
   new SuccessResponse("Students created successfully", savedStudents).send(res);
   console.timeEnd("getStudents");
 });
+
+
+/**
+ * const studentsCursor = db.getCollection('students').find({});
+
+studentsCursor.forEach(student => {
+    const classDoc = db.getCollection('classes').findOne({
+        className: student.classId,
+    });
+
+    if (classDoc) {
+        // Update the student document
+        db.getCollection('students').updateOne(
+            { _id: student._id },
+            { $set: { classId: classDoc._id, className: classDoc.className } }
+        );
+
+        print("Updated student " + student._id + " at " + new Date());
+    } else {
+        print("No class found with name " + student.classId + " for student " + student._id);
+    }
+});
+ */

@@ -5,23 +5,33 @@ import { PaymentModel } from "./payment.model";
 import { BadRequestError, SuccessResponse } from "../../../../lib/api";
 import { Student } from "../students/student.model";
 import { calculateFee } from "../../../../lib/utils/calculateFee";
-
+import { Logger } from "../../../../lib/logger/logger";
+import { Types } from "mongoose";
+const logger = new Logger(__filename);
 export const registerPayment = asyncHandler(async (req, res) => {
-  const { studentId, classId, feeType } = req.body;
+  const { studentId } = req.body;
   const payId = getPayID();
-  const student = await Student.findById(studentId);
+
+
+  logger.warn(`payId: ${payId}`);
+  logger.warn(`studentId: ${studentId}`);
+
+  const id = new Types.ObjectId(studentId);
+  const student = await Student.findById(id );
+
+  logger.debug(`student: ${student}`);
   if (!student) {
-    return new BadRequestError("Student not found");
+    throw new BadRequestError("Student not found");
   }
-  const classDoc = await ClassModel.findById(classId);
+  const classDoc = await ClassModel.findById(student.classId);
   if (!classDoc) {
-    return new BadRequestError("Class not found");
+    throw new BadRequestError("Class not found");
   }
-  const amount = calculateFee(classDoc.fee, feeType);
+  const amount = calculateFee(classDoc.fee, student.feeType);
   const newPayment = new PaymentModel({
-    studentId,
-    classId,
-    payId,
+    studentId: student._id,
+    classId:classDoc._id,
+    payID: payId,
     amount: amount,
   });
   const payment = await newPayment.save();

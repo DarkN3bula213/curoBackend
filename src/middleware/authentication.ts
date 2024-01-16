@@ -24,7 +24,7 @@ export default router.use(
       if (!token) throw new AuthFailureError("No token provided");
       const payload = jwt.verify(token, `process.env.JWT_SECRET!`);
       const userId = get(payload, "user");
-      Logger.debug(`user: ${userId}`);
+      // Logger.debug(`user: ${userId}`);
 
       const user = await UserModel.findOne(
         { _id:new Types.ObjectId(userId) },

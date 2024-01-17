@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
+import e from "express";
 import * as path from "path";
+import { env } from "src/env";
 import * as winston from "winston";
  
 /**
@@ -23,6 +25,7 @@ export class Logger {
 
   private static logger = winston.createLogger({
     level: "debug",
+    defaultMeta: { service: "user-service" },
     format: winston.format.combine(
       winston.format.colorize(),
       customTimestampFormat,
@@ -30,7 +33,29 @@ export class Logger {
         (info) => `${(info.timestamp)} [${info.level}]: ${info.message}`
       )
     ),
-    transports: [new winston.transports.Console()],
+    transports: [new winston.transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.splat(),
+        customTimestampFormat,
+        winston.format.printf(
+          (info) => `${(info.timestamp)} [${info.level}]: ${info.message}`
+        )
+      )
+    }), new winston.transports.File({
+      level:env.isDevelopment ? "debug" : "info",
+      dirname: "logs",
+      filename: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}.log`,
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.splat(),
+        customTimestampFormat,
+        env.isDevelopment ?    winston.format.printf(
+          (info) => `${(info.timestamp)} [${info.level}]: ${info.message}`
+        ): winston.format.json()
+      )
+    
+    })],
   });
 
   private static parsePathToScope(filepath: string): string {

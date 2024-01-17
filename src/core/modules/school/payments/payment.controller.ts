@@ -8,6 +8,7 @@ import { BadRequestError, SuccessResponse } from "../../../../lib/api";
 import { Logger } from "../../../../lib/logger/logger";
 
 import paymentService from "./payment.service";
+import statsService from "./stats.service";
  
 const logger = new Logger(__filename);
 
@@ -62,4 +63,20 @@ export const removePayment = asyncHandler(async (req, res) => {
     "Payment deleted successfully",
     deletedPayment
   ).send(res);
+});
+
+/**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=> */
+
+export const totalCollection = asyncHandler(async (req, res) => {
+  const payments = await statsService.totalCollection();
+  return new SuccessResponse("Total collection fetched successfully", payments).send(
+    res
+  );
+});
+
+export const classStats = asyncHandler(async (req, res) => {
+  const payments = await statsService.getClassStatistics();
+  return new SuccessResponse("Class statistics fetched successfully", payments).send(
+    res
+  );
 });

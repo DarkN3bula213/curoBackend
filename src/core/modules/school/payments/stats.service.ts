@@ -16,7 +16,7 @@ import { PaymentModel } from "./payment.model";
 class StatsService {
   constructor(
     private student: typeof Student,
-    private payment: typeof PaymentModel
+    private payment: typeof PaymentModel,
   ) {}
 
   async getStats() {
@@ -32,29 +32,37 @@ class StatsService {
       totalUnpaid,
     };
   }
-  async classCollection(classId: string) {
+  async totalCollection() {
     const payments = await this.payment.aggregate([
-      { $match: { classId: classId } },
-      {
-        $group: {
-          _id: "$classId",
-          total: { $sum: "$amount" },
-        },
-      },
+      { $group: { _id: '$classId', total: { $sum: '$amount' } } },
+      { $sort: { total: -1 } },
+      { $limit: 5 },
     ]);
     const totalPayment = payments.reduce((acc, curr) => acc + curr.total, 0);
-    // Group payments by class and section
-    const paymentsByClassAndSection = {};
-    const paymentsByClass = await this.payment.aggregate([
+
+    return totalPayment;
+  }
+  async getClassStatistics() {
+    const paymentStats = await this.payment.aggregate([
       {
         $group: {
-          _id: { classId: "$classId", section: "$section" },
-          total: { $sum: "$amount" },
+          _id: '$classId',
+          numberOfPayments: { $sum: 1 },
+          amountCollected: { $sum: '$amount' },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          classId: '$_id',
+          numberOfPayments: 1,
+          amountCollected: 1,
         },
       },
     ]);
-    paymentsByClass.forEach((payment) => {
 
-    });
+    return paymentStats;
   }
 }
+
+export default new StatsService(Student, PaymentModel);

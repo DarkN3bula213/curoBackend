@@ -5,17 +5,17 @@
 
 ## GET METHODS
 
-[ ] Get total number of paid students [+] Colocation would be benificial
-[ ] Get total number of students paid per class
-[ ] Get number of paid students per class section
-[ ] Get number ratios
-[ ] Get combined number
-[ ] Get $ value if all paid
-[ ] Get $ value if all paid in a class section
-[ ] Get $ value if all paid in all sections of a class
-[ ] Get list of total unpaid students
-[ ] Get list of unpaid students in class
-[ ] Get list of unpaid students in class section
+[+] Get total number of paid students [+] Colocation would be benificial
+[  ] Get total number of students paid per class
+[  ] Get number of paid students per class section
+[  ] Get number ratios
+[  ] Get combined number
+[+] Get $ value if all paid
+[  ] Get $ value if all paid in a class section
+[  ] Get $ value if all paid in all sections of a class
+[  ] Get list of total unpaid students
+[  ] Get list of unpaid students in class
+[  ] Get list of unpaid students in class section
 
 ## Changes to the model
 

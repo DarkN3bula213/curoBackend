@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import mongoose from 'mongoose';
+import { MongoMemoryServer } from 'mongodb-memory-server';
 
 let mongo: any;
 beforeAll(async () => {
@@ -20,10 +20,10 @@ afterAll(async () => {
   await mongo.stop();
 });
 
-import dotenv from "dotenv";
-dotenv.config({ path: "./tests/.env.test" });
+import dotenv from 'dotenv';
+dotenv.config({ path: './tests/.env.test' });
 
-test("MongoDB connects successfully", async () => {
+test('MongoDB connects successfully', async () => {
   const connectionState = mongoose.connection.readyState;
   expect(connectionState).toBe(1); // 1 for connected
 });

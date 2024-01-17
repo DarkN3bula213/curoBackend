@@ -37,7 +37,7 @@ class paymentService {
           studentId: student._id,
           classId: classDoc._id,
           className: classDoc.className,
-          section: classDoc.section,
+          section: student.section,
           payID: payId,
           amount: amount,
         });
@@ -110,7 +110,7 @@ class paymentService {
       const newPayment: IPayment = new PaymentModel({
         studentId: student._id,
         className: classDoc.className,
-        section: classDoc.section,
+        section: student.section,
         classId: classDoc._id,
         payID: payId,
         amount: amount,

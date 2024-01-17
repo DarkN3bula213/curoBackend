@@ -1,40 +1,45 @@
-import { app } from "./app";
-import { env } from "./env";
-import { Logger as log } from "./lib/logger/logger";
-// import { connect as connectDB } from "./database";
- 
+import { app } from './app';
+import { env } from './env';
+import { Logger as log } from './lib/logger/logger';
 
 const Logger = new log(__filename);
- 
 
-  app
-    .listen(env.app.port, () => {
-      Logger.info(`Server running on port: ${env.app.port}`);
-    })
-    .on("error", (e) => Logger.error(e.message));
+let server: any;
+server = app
+  .listen(env.app.port, () => {
+    Logger.info(`Server running on port: ${env.app.port}`);
+  })
+  .on('error', (e) => Logger.error(e.message));
 
+const exitHandler = () => {
+  if (server) {
+    server.close(() => {
+      Logger.info('Server closed');
+      process.exit(1);
+    });
+  } else {
+    process.exit(1);
+  }
+};
 
-// connectDB(app) 
+const unexpectedErrorHandler = (error: string) => {
+  Logger.error(error);
+  exitHandler();
+};
 
+process.on('uncaughtException', unexpectedErrorHandler);
+process.on('unhandledRejection', unexpectedErrorHandler);
 
+process.on('SIGTERM', () => {
+  Logger.info('SIGTERM received');
+  if (server) {
+    server.close();
+  }
+});
 
-
-  // startServer();
-
-
-// function stopServer() {
-//   app(() => {
-//     Logger.info("Server stopped");
-//     process.exit(0);
-//   });
-// }
-
-// process.on("SIGINT", () => {
-//   Logger.info("Received SIGINT signal");
-//   stopServer();
-// });
-
-// process.on("SIGTERM", () => {
-//   Logger.info("Received SIGTERM signal");
-//   stopServer();
-// });
+process.on('SIGINT', () => {
+  Logger.info('SIGINT received');
+  if (server) {
+    server.close();
+  }
+});

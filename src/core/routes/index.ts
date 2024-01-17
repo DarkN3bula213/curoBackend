@@ -9,6 +9,11 @@ import user from '../modules/auth/users/user.routes'
 import school from './school.routes'
 const router =Router()
 
+interface IRoute {
+  path: string;
+  route: Router;
+}
+
 
 router.get("/health-check", (req: Request, res: Response) => res.sendStatus(200));
 /*---------------------------------------------------------------------------*/
@@ -19,8 +24,11 @@ router.use(permissions(Permission.GENERAL));
 
 
 /*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
-  
-router.use("/user",user)
+const defaultIRoute: IRoute[] = [
+    
+]
+  /*---------------------------------------------------------------------------*/
+
+  router.use('/user', user);
 router.use("/school",school)
 export default router

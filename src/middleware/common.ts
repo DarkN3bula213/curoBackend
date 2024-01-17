@@ -1,7 +1,9 @@
 import express, { Application, json, urlencoded } from 'express';
 import cors from 'cors';
 import { env } from '../env';
-
+import helmet from 'helmet';
+import ExpressMongoSanitize from 'express-mongo-sanitize';
+import compression from 'compression';
 import routes from '../core/routes';
 import cookieParser from 'cookie-parser';
 import { NotFoundError } from '../lib/api';
@@ -22,6 +24,12 @@ export default function (app: Application) {
   if (!env.isTest) {
     app.use(morgan.successHandler);
     app.use(morgan.errorHandler);
+  }
+
+  if (env.isProduction) {
+    app.use(helmet());
+    app.use(ExpressMongoSanitize());
+    app.use(compression());
   }
 
   app.use('/api', routes);

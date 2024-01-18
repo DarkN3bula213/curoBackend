@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import e from "express";
+
 import * as path from "path";
 import { env } from "src/env";
 import * as winston from "winston";
@@ -14,11 +14,11 @@ import * as winston from "winston";
  * By Default it uses the debug-adapter, but you are able to change
  * this in the start up process in the core/index.ts file.
  */
-const customTimestampFormat = winston.format((info, opts) => {
+const customTimestampFormat = winston.format((info) => {
   info.timestamp = dayjs().format("DD-MM-YY HH:mm:ss"); // Customize the format as needed
   return info;
 })();
-let date = new Date();
+const  date = new Date();
 
 export class Logger {
   public static DEFAULT_SCOPE = "app";

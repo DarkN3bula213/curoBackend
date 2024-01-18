@@ -1,8 +1,4 @@
 import express from "express";
-
- 
-import { Types } from "mongoose";
-
 import asyncHandler from "../../lib/helpers/asyncHandler";
 import authSchema from "../../lib/schemas/auth.schema";
 import validator from "../../lib/helpers/validator";
@@ -10,8 +6,8 @@ import { ValidationSource } from "../../lib/constants";
 import { getAccessToken, verifyToken } from "../../lib/utils/jwt";
 import { get } from "lodash";
 import { ProtectedRequest } from "global";
-import { AccessTokenError, AuthFailureError, TokenExpiredError } from "../../lib/api";
-import UserModel from "../modules/auth/users/user.model";
+import { AccessTokenError,   TokenExpiredError } from "../../lib/api";
+
 import { Logger as log } from "../../lib/logger/logger";
 const Logger = new log(__filename);
 const router = express.Router();

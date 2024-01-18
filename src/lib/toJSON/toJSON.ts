@@ -17,7 +17,7 @@ const deleteAtPath = (obj: any, path: any, index: number) => {
 };
 
 const toJSON = (schema: any) => {
-  let transform: Function;
+  let transform: (doc: Document, ret: any, options: Record<string, any>) => any;
   if (schema.options.toJSON && schema.options.toJSON.transform) {
     transform = schema.options.toJSON.transform;
   }

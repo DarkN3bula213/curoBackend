@@ -5,10 +5,7 @@ import {
   getDecodedOsEnv,
   getOsEnv,
   getOsEnvOptional,
-  getOsPath,
-  getOsPaths,
   normalizePort,
-  toBool,
   toNumber,
 } from './lib/env';
 

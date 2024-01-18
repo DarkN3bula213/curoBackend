@@ -1,4 +1,4 @@
-import Redis,{RedisOptions} from "ioredis";
+import Redis from "ioredis";
 import { env } from "../../env";
 import { Logger as log} from "../../lib/logger/logger";
 const Logger = new log(__filename);
@@ -6,19 +6,7 @@ const Logger = new log(__filename);
 
 export default function client() {
     try {
-        const options: RedisOptions = {
-
-          retryStrategy(times) {
-            const delay = Math.min(times * 50, 2000);
-            return delay;
-          },
-          // Performance tuning options
-          maxRetriesPerRequest: null, // Set to null to disable giving up on a request
-          enableReadyCheck: true,
-          connectTimeout: 10000, // 10 seconds
-            autoResubscribe: true,
-
-        };
+   
      const redis = new Redis(env.redis.upstash);
         redis.on("connect", () => Logger.info("Cache is connecting"));
         redis.on("ready", () => Logger.info("Cache is ready"));

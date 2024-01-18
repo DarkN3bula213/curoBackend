@@ -1,15 +1,29 @@
-import { Router } from "express";
-import { bulkPostClasses } from "../modules/school/classses/class.controller";
-import validator from "../../lib/helpers/validator";
-import classSchema from "../modules/school/classses/class.schema";
-import  routes from "../modules/school/classses/class.routes";
-import students from "../modules/school/students/student.routes";
-import payments from "../modules/school/payments/payment.routes";
+import { Router } from 'express';
+import routes from '../modules/school/classses/class.routes';
+import students from '../modules/school/students/student.routes';
+import payments from '../modules/school/payments/payment.routes';
+import { registerRoutes } from '@lib/functions/registerRoutes';
 const router = Router();
 
-router.use("/classes", routes);
-router.use("/students", students);
-router.use("/payments", payments);
+// router.use("/classes", routes);
+// router.use("/students", students);
+// router.use("/payments", payments);
 
+const route = [
+  {
+    path: '/classes',
+    route: routes,
+  },
+  {
+    path: '/students',
+    route: students,
+  },
+  {
+    path: '/payments',
+    route: payments,
+  },
+];
 
-export default router; 
+registerRoutes(router, route);
+
+export default router;

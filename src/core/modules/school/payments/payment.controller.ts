@@ -1,6 +1,5 @@
 import asyncHandler from "../../../../lib/helpers/asyncHandler";
-import { ClassModel, IClass, getClassById } from "../classses/class.model";
-import { getPayID } from "../../../../lib/utils/getPayID";
+ 
 import { PaymentModel } from "./payment.model";
 import { BadRequestError, SuccessResponse } from "../../../../lib/api";
 

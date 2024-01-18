@@ -1,7 +1,7 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 import { ClassModel, IClass } from "../classses/class.model";
-import { IPayment, PaymentModel } from "../payments/payment.model";
+import { IPayment } from "../payments/payment.model";
 
 const DOCUMENT = "student";
 const COLLECTION = "students";

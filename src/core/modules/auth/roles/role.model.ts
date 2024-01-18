@@ -59,3 +59,7 @@ export async function findByCodes(codes: string[]): Promise<RoleDocument[]> {
     .lean()
     .exec();
 }
+
+export async function findByCode(code: string): Promise<RoleDocument | null> { 
+  return RoleModel.findOne({ code, status: true }).lean().exec();
+}

@@ -51,7 +51,7 @@ export const deleteEmployee = asyncHandler(async (req, res) => {
 });
 
 
-const getTeachingStaff = asyncHandler(async (req, res) => {
+export const getTeachingStaff = asyncHandler(async (req, res) => {
     const employees = await Employee.find({role: "TEACHER"}).lean().exec();
     return new SuccessResponse("Teaching staff fetched successfully", employees).send(res);
 });

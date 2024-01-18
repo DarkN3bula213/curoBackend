@@ -1,17 +1,15 @@
 import express from "express";
-import { ValidationSource } from "..//lib/constants";
-import validator from "../lib/helpers/validator";
-import authSchema from "../lib/schemas/auth.schema";
+ 
 import asyncHandler from "../lib/helpers/asyncHandler";
 import { ProtectedRequest } from "global";
-import { getAccessToken } from "../lib/utils/jwt";
+
 import UserModel from "..//core/modules/auth/users/user.model";
 import { Types } from "mongoose";
 import { AccessTokenError, AuthFailureError, TokenExpiredError } from "..//lib/api";
  import {get} from "lodash";
  import jwt from "jsonwebtoken";
-import { Logger as log } from "../lib/logger/logger";
- const Logger = new log(__filename);
+// import { Logger as log } from "../lib/logger/logger";
+//  const Logger = new log(__filename);
 const router = express.Router();
 
 export default router.use(

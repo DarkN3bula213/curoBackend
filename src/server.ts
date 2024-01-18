@@ -4,8 +4,8 @@ import { Logger as log } from './lib/logger/logger';
 
 const Logger = new log(__filename);
 
-let server: any;
-server = app
+// let server: any;
+const server = app
   .listen(env.app.port, () => {
     Logger.info(`Server running on port: ${env.app.port}`);
   })
@@ -15,7 +15,7 @@ const exitHandler = () => {
   if (server) {
     server.close(() => {
       Logger.info('Server closed');
-      process.exit(1); 
+      process.exit(1);
     });
   } else {
     process.exit(1);

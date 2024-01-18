@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import * as controller from './payment.controller';
 import validator from '../../../../lib/helpers/validator';
-import paymentSchema, { insertMany } from './payment.schema';
+import paymentSchema from './payment.schema';
 import authentication from '../../../../middleware/authentication';
 import authorisation from '../../../../middleware/authorisation';
 import { role } from '../../../../lib/helpers/role';

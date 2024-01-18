@@ -1,4 +1,4 @@
-import { Logger as log } from "../../../../lib/logger/logger";
+// import { Logger as log } from "../../../../lib/logger/logger";
 import asyncHandler from "../../../../lib/helpers/asyncHandler";
 import {  Student } from "./student.model";
 import { SuccessMsgResponse, SuccessResponse } from "../../../../lib/api";
@@ -8,7 +8,7 @@ import { updateStudentClassIds } from "../../../../lib/functions/mongo";
 
 
 
-const Logger = new log("Student Controller");
+// const Logger = new log("Student Controller");
 
 export const bulkPost = asyncHandler(async (req, res) => {
   console.time("getStudents");

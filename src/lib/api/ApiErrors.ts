@@ -7,7 +7,7 @@ import {
   InternalErrorResponse,
   NotFoundResponse,
   BadRequestResponse,
-  ForbiddenResponse,
+
 } from "./ApiResponse";
 import { Logger as log } from "../logger/logger";
 import { LoggerInterface } from "types";

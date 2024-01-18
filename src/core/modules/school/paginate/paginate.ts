@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { Schema, Document, Model } from 'mongoose';
+import { Schema, Document } from 'mongoose';
 
 export interface QueryResult {
   results: Document[];

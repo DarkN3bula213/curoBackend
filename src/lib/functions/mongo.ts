@@ -16,7 +16,7 @@ export async function updateStudentClassIds() {
 
 
   console.log(students);
-  for (let student of students) {
+  for (const  student of students) {
     const classDoc = await ClassModel.findOne({
       className: student.classId,
     }).exec();

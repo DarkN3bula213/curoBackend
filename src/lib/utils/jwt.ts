@@ -1,9 +1,9 @@
 import { promisify } from "util";
-import User,{ UserDocument} from "../../core/modules/auth/users/user.model";
+import  { UserDocument} from "../../core/modules/auth/users/user.model";
 import { AuthFailureError } from "../api";
 import path from "path";
 import { readFile } from "fs";
-import jwt,{sign,verify} from "jsonwebtoken";
+import jwt,{sign} from "jsonwebtoken";
 import  {env}  from "../../env";
 import { Logger as log} from "../logger/logger";
 const Logger = new log(__filename);
@@ -62,9 +62,7 @@ export async function encodeToken(user: UserDocument): Promise<string> {
 
 
 
-
-const privateKey = env.token.access.private;
-const publicKey = env.token.access.public;
+ 
 
 export function signToken(
   object:  object,

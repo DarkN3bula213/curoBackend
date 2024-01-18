@@ -56,7 +56,7 @@ mongoose
     schema.pre("updateOne", setRunValidators);
     schema.pre("update", setRunValidators);
   })
-  .connect(env.mongo.uri)
+  .connect(env.mongo.uri, )
   .then(() => {
     Logger.info("Mongoose connection done");
   })
@@ -91,3 +91,4 @@ process.on("SIGINT", () => {
 });
 
 export const connection = mongoose.connection;
+

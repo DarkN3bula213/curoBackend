@@ -4,10 +4,10 @@ import { env } from "../../env";
 import { Logger } from "../../lib/logger/logger";
 const { redis } = env;
 const log = new Logger(__filename);
-// const redisURL = `redis://:${redis.password}@localhost:${redis.port}`;
-const redisURL = `redis://:${redis.password}@${redis.host}:${redis.port}`;
+const redisURL = `redis://:${redis.password}@localhost:${redis.port}`;
+
 log.debug(redisURL);
-const redisUrl = `redis://localhost:6379`;
+
 
 
 

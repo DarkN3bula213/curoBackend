@@ -1,6 +1,6 @@
 import { Document, Model, model, Schema, UpdateQuery } from "mongoose";
 import bcrypt from "bcrypt";
-import {RoleDocument, RoleModel} from "../roles/role.model";
+import {RoleDocument} from "../roles/role.model";
 
 // Constants for document and collection names
 const DOCUMENT = "users";
